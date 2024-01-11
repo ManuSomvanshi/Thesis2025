@@ -1,0 +1,38 @@
+\section{Hyperbolic Structures on Surfaces}
+For the sake of consistency with the texts, I use the Poincare model of hyperbolic plane here.
+\begin{definition}
+  Let $X$ be a surface. A hyperbolic structure on $X$ is an atlas of charts such that each chart $\p:U\to \p(U)\subset \H$ is a homeomorphism (equivalently this can be defined to all of $\H$) and the transition maps in the atlas are restrictions of orientation preserving isometries of $\H$.
+\end{definition}
+
+Let $p\in X$ and $(U,\p)$ be a chart around $p$. We can define an inner product on $T_p X$ as
+\begin{align*}
+  \langle u,v \rangle_{T_pX} = \langle \p_* u, \p_* v \rangle  
+\end{align*}
+This is well defined since if $(V,\psi)$ is another chart containing $p$ then
+\begin{align*}
+  \langle \psi_* u, \psi_* v \rangle = \langle \psi_*\circ \p_*^{-1}\circ \p_* u, \psi_*\circ\p_*\circ \p_* v \rangle = \langle \p_* u, \p_* v \rangle.
+\end{align*}
+Since $\langle \cdot, \cdot \rangle_{T_pX}$ is a smooth bilinear map it serves as a Riemann metric on $X$. From here on I drop the subscript $T_pX$ on the metric. The norm induced by the metric will just be written $\|\cdot\|$. From here on we can think of Hyperbolic surface to be a topological surface with a hyperbolic Atlas and a Riemannian metric which is isometric to the hyperbolic metric locally.
+\begin{proposition}
+  Let $\g:[0,1] \to U\subset X$ be a curve in $X$ between $x_0$ and $x_1$. If $\gamma$ is a geodesic then there exist charts $(U_\a,\p_\a)$ such that they cover $\g$ and $\p_\a\circ \g\big|_{U_\a}$ is a segment of a geodesic in $\H$. 
+\end{proposition}
+\begin{proof}
+  Suppose that $\g$ is a geodesic. Let $x$ be a point on $\g$. There exists a neighborhood $U$ of this point which is isometric to $\H$ by the $\p$. Let $\sigma$ be some curve between the end-points of the curve $\p\circ \g$ (which always exist since $\H$ is complete). Then,
+  \begin{align*}
+    L(\sigma) = L(\p^{-1}\circ \sigma) \geq L(\g) = L(\p\circ\g)
+  \end{align*}
+  since $\g$ is a geodesic. Thus it follows that $\p\circ \g$ is a geodesic.
+\end{proof}
+
+\begin{theorem}[Half of Hopf-Rinow theorem]
+  In a complete hyperbolic surface, all geodesics can be extended indefnitely.
+\end{theorem}
+\begin{proof}
+  Suppose that $\g: (-\epsilon, \epsilon)\to X$ is a bounded geodesic in $X$. Then consider a sequence of points $\g(t_n)$ where $t_n \to \e$. Since $X$ is complete the Cauchy sequence $\g(t_n)$ converges to a unique point, say $x_1$. Let $U,\p$ be some chart centered around $x_1$. The image $\p\circ \g$ is a geodesic by previous proposition. Extend this in $\H$ indefnitely. Then the pull back of this extension extends $\g$ at $x_1$ till a new end point $x_2$. Repeating this process one can indefnitely extend $\g$.
+\end{proof}
+\begin{theorem}
+  Any complete, connected, simply-connected hyperbolic surface is isometric to $\H$.
+\end{theorem}
+\begin{proof}
+  Suppose $X$ is a space with the mentioned properties. Consider the maps $E,D$ defined as follows
+\end{proof}
