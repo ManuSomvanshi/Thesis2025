@@ -12,7 +12,7 @@ This is well defined since if $(V,\psi)$ is another chart containing $p$ then
 \begin{align*}
   \langle \psi_* u, \psi_* v \rangle = \langle \psi_*\circ \p_*^{-1}\circ \p_* u, \psi_*\circ\p_*\circ \p_* v \rangle = \langle \p_* u, \p_* v \rangle.
 \end{align*}
-Since $\langle \cdot, \cdot \rangle_{T_pX}$ is a smooth bilinear map it serves as a Riemann metric on $X$. From here on I drop the subscript $T_pX$ on the metric. The norm induced by the metric will just be written $\|\cdot\|$. From here on we can think of Hyperbolic surface to be a topological surface with a hyperbolic Atlas and a Riemannian metric which is isometric to the hyperbolic metric locally.
+Since $\langle \cdot, \cdot \rangle_{T_pX}$ is a smooth bilinear map it serves as a Riemann metric on $X$. From here on I drop the subscript $T_pX$ on the metric. The norm induced by the metric will just be written $\|\cdot\|$. From here on we can think of Hyperbolic surface to be a topological surface with a hyperbolic Atlas and a Riemannian metric which is isometric to the hyperbolic metric locally. The metric induces a distance on $X$ which is given by the infimum of the length of the curves.
 \begin{proposition}
   Let $\g:[0,1] \to U\subset X$ be a curve in $X$ between $x_0$ and $x_1$. If $\gamma$ is a geodesic then there exist charts $(U_\a,\p_\a)$ such that they cover $\g$ and $\p_\a\circ \g\big|_{U_\a}$ is a segment of a geodesic in $\H$. 
 \end{proposition}
@@ -34,5 +34,24 @@ Since $\langle \cdot, \cdot \rangle_{T_pX}$ is a smooth bilinear map it serves a
   Any complete, connected, simply-connected hyperbolic surface is isometric to $\H$.
 \end{theorem}
 \begin{proof}
-  Suppose $X$ is a space with the mentioned properties. Consider the maps $E,D$ defined as follows
+  Suppose $X$ is a space with the mentioned properties. Consider the maps $E:\H\to X,D:X\to \H$ defined as follows:
+  \begin{itemize}
+    \item \textit{The exponential.} Choose a point $a\in X$ and a chart $(U, \p)$ such that $\p(a) = 0$. For $x\in \H$ let $\g$ be the geodesic between $0$ and $x$ and then extend the geodesic $\p^{-1}(\g)$. Define $E(x)$ as the point on the extended geodesic such that $\text{dist}(a,E(x)) = \rho(0,x)$.
+    \item \textit{The developing.} Fix a point $a\in X$ and a chart $(U,\p)$ around it. There exists a map $D:X\to \H$ such that $D$ is a local isometry and $D\big|_U = \p$. This claim is proven below:
+      \begin{proof}[proof of existence of $D$]
+        Choose a path $\g$ between points $a,b\in X$. The path can be cover by finitely many convex coordinate charts (due to compactness), say $(U_i,\p_i)$ with $(U_0, \p_0) = (U,\p)$. Refine the covering such that it is minimal (so that $U_i$ only intersects with $U_{i\pm 1}$ and no $U_i$ is contained in $U_j$). Choose points $x_0=a,\cdots,x_i,\cdots,x_n=b$ on $\g$ such that $[x_i,x_{i+1}]\subset U_i$. If the maps $\p_i$ and $\p_{i+1}$ do not agree on $U_i\cap U_{i+1}$, which contains $x_{i+1}$,then there exists an isometry $g$ (unique extension of $\p_{i+1}\circ\p_{i}^{-1}$) such that $g\circ\p_i = \p_{i+1}$ on their intersection. Thus without loss of generality we can assume that all the charts agree on the intersection (by replacing $\p_{i+1}$ with $g\circ \p_1$). Now define $D(b) = \p_n(b)$.\\
+
+        \textit{(Well defined-ness).} Clearly $D$ is not dependent on the choice $x_i$. Now suppose $(U'_i,\p'_i)_{i=0}^m$ is a different set of charts which minimally cover $\g$ with $U_0,\p_0 = U,\p$ and such that the coordinate charts agree on the intersection. We show by induction that whenever $U_i\cap U'_j\neq \emptyset$ then $\p'_j = \p_i$ in the intersection. By construction $U_0 = U_0'$ and $\p'_0 = \p_0$. Since $U'_0\cap U_1 = U_0\cap U_1$ it follows that in this intersection $\p'_0 = \p_0 = \p_1$. This is the base case of the induction. Suppose now that for all $s<j$  if $U'_s\cap U_i \neq \es$ then $\p'_s = \p_i$ in the intersection for all $i$. Consider $U'_j$ and suppose that it intersects with some $U_i$. There are two cases:
+        \begin{enumerate}
+          \item $U'_{j-1}\cap U_i\neq \es$. In this case consider the intersection $U_i\cap U'_j\cap U'_{j-1}$. In this region $\p'_j= \p'_{j-1} = \p_i$. Restricted to $\p'_j (U_i \cap U'_j)$ the map $g = \p_i\circ (\p'_j)^{-1}$ is in $PSL_2(\R)$. Since on $\p'_j (U_i \cap U'_j \cap U_i)$ the map $g$ is identity it follows that $g$ is identity everywhere in $\p'_j(U_i\cap U'_j)$ (since Mobius maps are fixed by $3$ points). 
+          \item $U'_{j-1}\cap U_i = \es$. Then $U'_{j-1}$ intersects $U_{i-1}$ (by construction). In the region $U_{i-1} \cap U_j\cap U_{j-1}$ we have $\p'_j = \p'_{j-1} = \p_{i-1}$ and thus $\p'\circ \p^{-1}_{i-1}$ is identity on infinitely many points. Thus they are the same on $U'_j\cap U_{i-1}$. In the region $U'_j\cap U_i \cap U_{i-1}$ we have $\p'_j = \p_{i-1} = \p_i$. Using the same argument as before we have that $\p_i = \p'_j$ everywhere on $U_i \cap U'_j$.
+        \end{enumerate}
+        Hence the induction step is complete. Since $b\in U'_m\cap U_n$ it follows that $\p'_m(b) = \p_n(b)$. Hence $D$ is not dependent on the covering of $\g$. Now we need to show that $D$ does not depend on $\g$. If $\g'$ is some other curve. Since $X$ is simply connected it follows that there is a Homotopy $H$ between $\g$ and $\g'$. Using continuity of $H$ there exists an $\e$ so that the curves $H(s,t)$ and $H(s,t+\e)$ can be covered by the same charts. Hence $\p_n(b)$ is the same for both. Thus it follows that $D$ is well defined.
+      \end{proof}
+  \end{itemize}
+  Now that we have these two functions, note that $D\circ E = 1_{\H}$: let $x\in \H$ then $E(x)$ lies on a geodesic $\g$ from $a$ to $E(x)$ such that $\p\circ \g$ is part of the geodesic connecting $0$ and $x$. Let $U_i$ be any minial cover of the geodesic from $a$ to $E(x)$. Then $\p_n(E(x))$ lies on the extension of the geodesic $\p\circ\g$ and $\rho(0,D(E(x))) = \rho(0,x)$ since $D$ and $E$ are local isometries, but there is only one such point on the geodesic: $x$. Hence $D\circ E(x) = x$.\\
+
+  Note that on the image of $E$ in $X$ the map $E\circ D$ is identity. $E(\H)$ is closed and open (since $E$ is local injection it follows by Invariance of domain theorem). Since $X$ is connected the only non-trivial clopen subset is $X$ itself. Thus $E(\H) = X$. Hence $E\circ D = 1_X$.
 \end{proof}
+
+As a consequence of the above theorem it follows that the universal cover of any hyperbolic surface $X$ is isometric to $\H$.
