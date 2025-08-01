@@ -1,0 +1,247 @@
+\chapter{Teichm\"{u}ller Space and Thurston's Metric}
+In this chapter $S$ represents a closed surface of genus $g\geq 2$, $X,Y$ will be closed hyperbolic surfaces of genus $g$, and $\Gamma_X,\ \Gamma_Y$ will be faithful representations of their fundamental groups in $\PSL$. The goal of this chapter is first to construct the Teichm\"{u}ller spaces and give some examples and results in the subject. Secondly, it is to understand the Thurston metric on Teichm\"{u}ller spaces. The proofs presented here of the properties of Thurston metric are all motivated by the ideas of Thurston in \cite{thurston}, but the proofs are presented in detail to fill the gaps in his proofs. This is done since there is a scarcity of sources which present these proofs with all the details.
+\section{Teichm\"{u}ller Space of Hyperbolic Surfaces} % and some examples
+The question which motivates the construction of Teichm\"{u}ller space is: \textit{what are all the hyperbolic structures which a surface $S$ can admit?} $S$ admits a hyperbolic structure if there is a Riemannian metric on $S$ which locally looks like the metric on $\H$. Another way to look at this that $S$ admits a hyperbolic structure if there is a hyperbolic surface $X$ and a diffeomorphism $f:S\to X$. This is equivalent since the diffeomorphism pulls back the metric on $X$ on $S$. A pair $(X,f)$ where $X$ is a hyperbolic surface and $f:S\to X$ is a homeomorphism is called a \textit{marking} of $S$. Two markings $(X,f)$ and $(Y,g)$ are said to be equivalent if there is an isometry $I:X\to Y$ such that $I f \simeq_{\text{iso}} g$.
+\begin{rem}
+  From here on if $f:S\to X$ and $g:S\to Y$ are markings on $S$ and $\vp:X\to Y$ is some map such that $\vp f \simeq_{iso} g$ then I will say that ``$\vp$ is compatible with the marking". Note that for any two other markings $(X',f')\in \mathfrak{X} \And (Y'g')\in \mathfrak{Y}$ it follows that $\vp$ induces a homeomorphism $\vp' :X'\to Y'$ which is compatible with these new markings as well.
+\end{rem}
+\begin{definition}
+  The Teichm\"{u}ller space of $S$ is defined as the space of a hyperbolic markings on $S$ up to the above equivalence.
+  \begin{align}
+    \T(S) = \l\{(X,f:S\to X)\ |\ f\ \text{is orientation preserving}\r\}/\sim
+  \end{align}
+  We denote the elements of $\T(S)$ by $ \mathfrak{X}$.
+\end{definition}
+This definition can be extended to surfaces with boundaries with the additional requirement that $\pa X$ is geodesic. From here on whenever $X$ is a hyperbolic surface with boundary it is assumed that the boundary is geodesic.
+\begin{rem}
+  Using theorem \ref{thm:homotopy-eq} the definition of a marking can be weakened to be a homotopy equivalence $f:S\to X$ without any affect to $\T(S)$. For surfaces with boundary we need to be a bit more careful. The equivalence relation in the case of surfaces with boundary would then be that $If\simeq g$ such that the homotopy is a through maps which take boundary to boundary and are homeomorphisms on the boundary. Because of this we will sometimes interchange between a marking being a homeomorphism and a homotopy equivalence.\footnote{A homotopy equivalence is said to be orientation preserving if the induced isomorphism on the second homology group, which can be identified with $\Z$, maps $1\mapsto 1$.}
+\end{rem}
+There is another interesting perspective to view $\T(S)$, and this is using the holonomy maps and the Development theorem. Suppose that $ \mathfrak{X}\in \T(S)$ and let $(X,f)$ be some representative of $ \mathfrak{X}$. Then $f_*:\pi_1(S)\to \pi_1(X)$ is an isomorphism, and using the developing theorem we have a discrete and faithful representation $\hol:\pi_1(X)\to \PSL$. This gives a representation of $\rho:\pi_1(S)\to \PSL$. If $(X',f')$ is some other representative of $ \mathfrak{X}$ then the holonomy representations differ by conjugation by an element of $\text{Isom}(\H)\cong \text{PGL}(2,\R)$. This leads to the following claim:
+\begin{proposition}[see \cite{primer}]
+  $\T(S)$ is in bijection with the set of all discrete and faithful representations of $\pi_1(S)$ in $\PSL$ upto conjugation by $\text{PGL}(2,\R)$, denoted by $\text{DF}(\pi_1(S),\PSL)/\text{PGL}(2,\R)$.
+\end{proposition}
+This perspective is interesting as it allows us to directly define a topology on $\T(S)$. Give $\pi_1(S)$ the discrete topology and $\text{DF}(\pi_1(S),\PSL)$ the compact open topology. Then $\text{DF}(\pi_1(S), \PSL)/\text{PGL}(2,\R)$ can be equipped with the quotient topology which is then pulled back to $\T(S)$.\\
+
+Since every nontrivial closed curve $\g$ on a hyperbolic surface $X$ is freely homotopic to a unique closed geodesic (see \cite{casson}), one can define the length function $\ell_{ \mathfrak{X}}$ from the set, $ \mathcal{S}$, of all non-trivial closed curves on $S$ to $\R_+$ which maps a closed curve to the length of the unique geodesic in $X$ which is freely isotopic to the curve. This is independent of the choice of representative of $ \mathfrak{X}$. This also gives a continuous map $\ell: \T(S)\to \R_{+}^{ \mathcal{S}}$ which takes $ \mathfrak{X}$ to $\ell_{ \mathfrak{X}}$.
+\begin{exmp}
+  Consider the pair of pants, i.e. sphere with three punctures $S_{0,3}$. A hyperbolic pair of pants (with geodesic boundary) can always be cut into two hyperbolic right-angled hexagons, by cutting along the geodesics orthogonal to each pair of boundary curves. By \ref{thm:hexagon} it follows that exactly three side lengths determine the entire hexagon. Hence the Teichm\"{u}ller space of $S_{0,3}$ is in bijective correspondence with $\R_{+}^3$. This map is a homeomorphism since two hexagons with close side lengths are ``almost" isometric.
+\end{exmp}
+Using the fact that every closed hyperbolic surface $X$ of genus $g$ can be cut along $3g-3$ closed geodesics to give a pairs of pants decomposition of $X$, and that each of these pants need $3$ positive real numbers to determine them exactly, Fenchel and Nielsen arrived at the following theorem.
+\begin{theorem}[Fenchel-Nielsen Theorem \cite{primer}]
+  For any genus $g$ closed surface $S$, $\T(S) \cong \R^{-3\chi(S)}$. 
+\end{theorem}
+\begin{rem}
+The extra $3g-3$ parameters come from the fact that when gluing back the pair of pants to recover the genus $g$ surface, the gluing can be done at any angle. Thus for each gluing we have a ``twist" parameter. Since there are $3g-3$ curves $\g_i$ in the pants decomposition, the hyperbolic structure is determined by $((\ell_1,\tau_1),\cdots, (\ell_{3g-3}, \tau_{3g-3})$, where $(\ell_i,\tau_i)$ is the length and twist of $\g_i$. 
+\end{rem}
+
+\section{Thurston's Metric on Teichm\"{u}ller Space}
+In his paper \cite{thurston}, Thurston asks the following question: given a surface $S$ with two hyperbolic structures $f:S\to X$ and $g:S\to Y$, is there a homeomorphism $\vp:X\to Y$ compatible with the markings which realizes the least possible value of the Lipschitz constant? In other words if
+\begin{align}
+  L = \inf_{\substack{\psi:X\to Y\\ \psi f\simeq g}} \text{Lip}(\psi) 
+\end{align}
+then does there exist a $L-$Lipschitz homeomorphism $\vp$. It turns out that the answer to this question is positive. The definition of the Thurston metric was motivated by this question. 
+\begin{definition}
+  Let $L:\T(S)\times \T(S) \to \R_{+}$ be defined as
+  \begin{align}
+    L( \mathfrak{X}, \mathfrak{Y}) = \inf_{\substack{\psi:X\to Y\\ \psi f\simeq g}} \log(\text{Lip}(\psi))
+  \end{align}
+  This is called Thurston's asymmetric metric.
+\end{definition}
+Thurston had also defined another metric on $\T(S)$ as follows:
+\begin{definition}
+  Define $K: \T(S)\times \T(S) \to \R_{+}$ as
+  \begin{align}
+    K( \mathfrak{X}, \mathfrak{Y}) = \sup_{c\in \mathcal{S}} \log\l(\frac{\ell_\mathfrak{Y}(c)}{ \ell_\mathfrak{X}(c)}\r) 
+  \end{align}
+\end{definition}
+This section is mostly devoted to showing that $L$ and $K$ indeed satisfy all the conditions for a metric except symmetry. The symmetry is not really an issue as it can forced by defining a new metric as $L( \mathfrak{X}, \mathfrak{Y}) + L( \mathfrak{Y}, \mathfrak{X})$. In \cite{thurston} it is also shown that $K=L$, but that will not be required in this thesis. It is easy to see that $K( \mathfrak{X}, \mathfrak{Y}) \leq L( \mathfrak{X}, \mathfrak{Y})$, as a Lipschitz maps stretches any curve by at most it's Lipschitz constant. The other inequality is much harder to prove.\\
+
+Firstly, it is quite straight forward to check that $L,K$ are not dependent on the choice of representative of $ \mathfrak{X}$ and $ \mathfrak{Y}$.
+\begin{proposition}
+  Both $L,K$ satisfy the triangle inequality: for any $ \mathfrak{X},\mathfrak{Y}, \mathfrak{Z}\in \T(S)$,
+      \begin{align}
+        L( \mathfrak{X}, \mathfrak{Z}) \leq L( \mathfrak{X}, \mathfrak{Y}) + L( \mathfrak{Y}, \mathfrak{Z})\\
+        K( \mathfrak{X}, \mathfrak{Z}) \leq K( \mathfrak{X}, \mathfrak{Y}) + K( \mathfrak{Y}, \mathfrak{Z})
+      \end{align}
+\end{proposition}
+\begin{proof}
+  Choose representatives $(X,f)$, $(Y,g)$, and $(Z,h)$ respectively. Let $\vp:X\to Y$ and $\psi: Y\to Z$ be Lipschitz maps with Lipschitz constants $K_1, K_2$ respectively. Then $d_{Z}(\psi\vp(x),\psi\vp(x'))\leq K_1d_{Y}(\vp(x),\vp(x'))\leq K_1K_2 d_{X}(x,x')$. Thus $\text{Lip}(\psi\vp)\leq K_1K_2 = \text{Lip}(\psi)\text{Lip}(\vp)$. Since the Lipschitz maps $X\to Z$ which factor through $Y$ forms a strict subset of all Lipschitz maps from $X\to Z$, the triangle inequality for $L$ follows.\\
+
+  Triangle inequality for $K$ just follows just from re-writing:
+  $$\frac{\ell_{Z}(c)}{\ell_X(c)} = \frac{\ell_{Z}(c)}{\ell_Y(c)}\cdot \frac{\ell_{Y}(c)}{\ell_X(c)}$$
+\end{proof}
+\begin{theorem}
+  $L( \mathfrak{X}, \mathfrak{Y})\geq 0$ for all $ \mathfrak{X}, \mathfrak{Y}\in \T(S)$. The equality is satisfied if and only $ \mathfrak{X} = \mathfrak{Y}$.
+\end{theorem}
+\begin{proof}
+  Suppose that $ K = e^{L(\mathfrak{X}, \mathfrak{Y})} \leq 1$, and let $\vp_n$ be a sequence of Lipschitz homeomorphisms with $\text{Lip}(\vp_n) \to K$. Since the set of Lipschitz maps with Lipschitz constant bounded by $1$ forms an equicontinous family; by Arzela-Ascoli theorem it follows that there is some Lipschitz map $\vp:X\to Y$ which achieves this constant $K$ (note: $\vp$ may not be a homeomorphism, but since $X$ is compact it follows that $\vp$ is surjective). From here the proof goes as follows: first it is shown that $\vp$ maps disks in $X$ onto disks in $Y$ of the same radius. Using this this it is then shown that $\vp$ is an isometry, i.e. $K=1$. 
+
+  Denote by $\mu_X$ and $\mu_Y$ the area measures of $X$ and $Y$. Using the explicit area formula for hyperbolic disks in $\H$ (in \cite{katok}) it is easy to show that the area of a small enough disk on any hyperbolic surface is dependent only on it's radius $r$ and since $\vp$ contracts distance by $K$ it follows that $\vp$ is area non-increasing on closed disks. The outer regularity of the area measure and Lipschitz property of $\vp$ also implies that $\vp$ maps negligible sets to negligible sets. Suppose that $ \mathcal{B} = \{B_n\}$ is a countable family of disjoint closed disks in $X$ such that the union of all these disks has complete measure in $X$. Using the fact that $\vp$ is surjective and maps $X-\bigcup \mathcal{B}$ to a measure zero set,
+  $$\mu_Y(Y-\vp(\bigcup \mathcal{B})) = \mu_Y(\vp(X)-\vp(\bigcup \mathcal{B}))\leq \mu_Y(\vp(X-\bigcup \mathcal{B})) =0.$$ 
+  Thus $\vp(\bigcup \mathcal{B})$ is a set of full measure. If the disk $B_n\in \mathcal{B}$ is of radius $r_n>0$ then $\vp(B_n)$ is contained in a disk $B'_n$ of radius $r_n$ since $\vp$ has a Lipschitz constant $K\leq 1$. The family $ \mathcal{B}' = \{B'_n\}$ is also full measure in $Y$. Hence,
+  $$\sum_n\mu_Y\l(B_n'- \vp(B_n)\r)= \mu_Y(\bigcup \mathcal{B}') - \mu_Y(\vp(\bigcup \mathcal{B})) =\mu_Y(Y)- \mu_Y(Y)= 0$$
+  This means that $\vp(B_n)$ is dense in $B_n'$ but since it is also compact it follows that $B_n$ surjectively maps onto $B'_n$.\\
+
+  We have just proved that given \textit{any} family of closed disjoint disks of $X$ each disk in the family surjectively maps onto a disk of the same radius. This means that every disk in $X$ maps to a disk of the same radius. Suppose $x\in X$ and let $B(x,r)$ be a disk of radius $r$ centered at $x$ which is surjectively mapped to $B'(y,r)$ in $Y$. If $\vp(x)$ is a distance $\e$ away from the center of $B'(y,r)$ then the disk $B(x,r-\e/2)$ does not lie inside $B'(y,r)$, a contradiction! Thus $\vp$ also maps center to the center of the disk. Moreover, if $x'\in B(x,r)$ lies on the boundary then $\vp(x')$ also lies on the boundary as concentric disks centered at $x$ map to concentric disks centered at $y$. For any points $x,x'$ there the disk about $x$ of radius $d_X(x,x')$ gets mapped to a disk of the same radius and thus $d_Y(\vp(x),\vp(x'))= d_X(x,x')$. Hence $\vp$ is an isometry.\\
+
+  Since the homeomorphisms $\vp_n$ converge to $\vp$ it follows that $\vp_n\simeq \vp$ and thus $\vp$ is compatible with the marking on $X$ and $Y$. The second part of the theorem is trivial now.
+\end{proof}
+\begin{rem}
+  It is not obvious above why a countable family of closed disjoint disk exists in the first place. The answer is given by Vitali's covering lemma and covering theorem. Note that in the construction of the countable disjoint family of closed disks in the proof of Vitali's theorem (see \cite{evans}) there is an initial choice of a ball. This has been used in the above proof as well to claim that every disk surjectively maps to a disk of the same radius, as for any given disk one can construct such a family containing this disk.
+\end{rem}
+\begin{theorem}\label{thm:Kmetric}
+  $K( \mathfrak{X}, \mathfrak{Y})\geq 0$ for all $ \mathfrak{X}, \mathfrak{Y}\in \T(S)$. The equality is satisfied if and only $ \mathfrak{X} = \mathfrak{Y}$.
+\end{theorem}
+To prove this we first prove the following lemma:
+\begin{lemma}\label{lem:unbounded}
+  Suppose that $ \mathfrak{X}$ and $ \mathfrak{Y}$ are distinct elements of $\T(S)$. If $\vp:X\to Y$ is a homeomorphism compatible with the markings which lifts to a homeomorphism $\tilde{\vp}:\H\to \H$. Then the function
+  $$D(z) = d(\tilde{\vp}(z),\tilde{\vp}(0)) - d(z,0)$$
+is unbounded above.
+\end{lemma}
+\begin{figure}[t]
+  \centering
+  \def\svgwidth{0.7\textwidth}
+  \tiny
+  \import{figures/Chapter2}{unbounded.pdf_tex}
+  \caption[Proof of \ref{lem:unbounded}]{These represent the triangles $\Delta$ and $\Delta'$. The idea in the proof was to use the fact that Gromov product $(x|y)_z$ approximates the length of the perpendicular from $z$ to $(x,y)$.}
+  \label{fig:lem_proof}
+\end{figure}
+\begin{proof}
+  Suppose that $D$ is the upper of $D(z)$. From the proof of theorem \ref{thm:boundary_maps} the lift $\tilde{\vp}$ is a quasi-isometric map and thus is maps geodesics to quasi-geodesics and therefore the geodesic $\l(\bar{\vp}(z), \bar{\vp}(w)\r)$ is a bounded distance away from the image of the geodesic $(z,w)$ under $\tilde{\vp}$, where $z,w\in \H\cup \bH$. Consider the triangles $\Delta = (0, \xi, \xi')$ and $\Delta' = (\tilde{\vp}(0), \bp(\xi), \bp(\xi'))$ where $\xi,\xi'\in \bH$, see figure \ref{fig:lem_proof}. Thus we have the following inequality involving the Gromov product and the hyperbolicity constant, $\delta$, of $\H$,
+  \begin{align*}
+    \l(\bp(\xi) | \bp(\xi')\r)_{\tilde{\vp}(0)} &\leq d(\tilde{\vp}(0), (\bp(\xi), \bp(\xi'))) + \delta\\  &\leq d(0, (\xi,\xi')) + D + \delta \\ &\leq (\xi | \xi')_0 + D + 2\delta
+  \end{align*}
+  where the first and last inequality follows from the inequality $\l|(x,y)_z - d(z,(x,y))\r|\leq \delta$ (see \cite{metric}), and the second inequality follows from the definition of $D(z)$. Since $e^{-(\xi|\xi')_z}$ is a metric on the boundary for a fixed $z$ the above inequality tells us that $\bp^{-1}$ is a Lipschitz map on the boundary with respect to the Gromov product induced metrics with fixed point $\tilde{\vp}(0)$ and $0$ respectively on the domain and range (note that these are Lipschitz equivalent metrics, so the fixed point does not really matter).\\
+
+  In this paragraph, we identify $\H$ with the upper half plane and $\bH$ with the extended real line. Since $\bp^{-1}$ is $K-$Lipschitz for some $K\geq 1$ it is almost everywhere differentiable on $\bH$, so without loss of generality assume that $0$ is such a point and that $\bp^{-1}(0)$ is bounded. If $F$ is a fundamental domain of $\Gamma_X$ containing $i$, then the geodesic $[i,0)$ passes through infinitely many translates of the fundamental domain $\{\gamma_n F\}_{n=1}^\infty$ where $\g_n\in \Gamma_X$. Let $\g_n (i)\in \g_n F$ be translates of $i$ and $iy_n$ be orthogonal projection of $\g_n(i)$ onto the imaginary line. It follows that both $\g_n(i)$ and $y_n$ converge to $0$ in $\H\cup \bH$ as they lie in the same translate of $F$. The maps $g_n(z) = y_n z$ and $k_n(z) = \g_n^{-1}g_n(z)$ are isometries of $\H$ and $h_n = g_n^{-1} \l(\bp^{-1}\r) g_n$ is a homeomorphism of $\bH$. We claim the following:
+  \begin{enumerate}
+    \item \textit{The sequence $(h_n)$ converges point-wise to the map $\xi\to a\xi$ on the boundary where $a$ is the derivative of $\bp^{-1}$ at $0$}: composing by an isometry of $\H$, it can be assumed without loss of generality that $\bp^{-1}(0) = 0$ and $\bp^{-1}(\infty) = \infty$. Since $\bp^{-1}$ is differentiable at $0$ it follows that
+      $$h_n(\xi) = a \xi + r(y_n\xi)\xi$$
+     where $r(\xi)\to 0$ as $\xi \to 0$ and thus as $n\to \infty$ we have $h_n(\xi) \to a\xi$.
+   \item \textit{The sequence $k_n$ has a convergent subsequence which converges to some $k\in \PSL$}: Using the fact that $k_n(i)\to i$ as $n\to \infty$ it is clear that $k_n$ lies in some compact set of $\PSL$, and thus there is a subsequence of $k_n$ which converges to $k$ in the $\PSL$ topology. This means that $k_{n_j}\to k$ pointwise as well.
+  \end{enumerate}
+  Now let $G = \text{Homeo}^+(\bH)/\PSL$ where the quotient is by right action. Then using equivariance and the two claims above the identity in $G$ can be written as:
+  \begin{align*}
+    \l[\text{id}_\H\r] &= \l[\{z\mapsto az\}\r] = \l[\lim_{n\to \infty} h_n\r]\\ &= \l[\lim_{n\to \infty} g_n^{-1}\bp^{-1} g_n\r] = \l[\lim_{n\to \infty} \bp^{-1} g_n\r]\\ &= \l[\lim_{n\to \infty} \bp^{-1} \g_n k_n\r] = \l[\lim_{n\to \infty} \bp^{-1} k_n\r] \\ &= \l[\bp ^{-1}k\r]
+  \end{align*}
+  This shows that $\bp$ agrees with an isometry $g$ on the boundary. Using Alexander's trick it follows that $\bar{\vp}$ is isotopic to the isometry. Since $\bar{\vp}$ is equivariant it follows that $g$ is equivariant when restricted to the boundary and thus everywhere. The equivariance implies that $g$ induces an isometry from $X\to Y$ which is isotopic to $\vp$. This contradicts the fact that $ \mathfrak{X}$ and $ \mathfrak{Y}$ are distinct elements of $\T(S)$.
+\end{proof}
+
+\begin{proof}[Proof of theorem \ref{thm:Kmetric}]
+  Assuming $ \mathfrak{X}$ and $ \mathfrak{Y}$ be distinct elements of $\T(S)$ we will first show that $K( \mathfrak{X}, \mathfrak{Y})>0$. The idea is to construct a closed curve $c$ whose length in $Y$ is larger than in $X$ using the fact that the function $D(z)$ is unbounded. For this we construct a $c$ so that it is a geodesic in $Y$ and estimate a lower bound on it's length in $Y$. Then pull back $c$ to $X$ and estimate an upper bound on it's length in $X$.\\
+
+  Start with points $0$ and $z$ in $\H$, and let $\vp:X\to Y$ be the homeomorphism $gf^{-1}$. Let $y_0, y_1$ be the projections of $w_0=\tilde{\vp}(0), w_1 = \tilde{\vp}(z)$ under $p_Y$. Let $\g\in \Gamma_Y$ be such that $\g w_0$ is the translate of $w_0$ closest to $w_1$. The piecewise geodesic $\tilde{c}_0$ from $w_0$ to $w_1$ and then $w_1$ to $\g w_0$ projects down in $Y$ to a closed curve $c_0$ in $Y$ based at $y_0$ and passes through $y_1$. Let $(y_0,\dot{c}_0(0))$ be an element of $\text{T}^1Y$ and $N_\e$ be an $\e$ neighborhood of $(y_0, \dot{c}_0(0))$. Since geodesic flow $\Phi_t$ on $\text{T}^1Y$ is area preserving, by Poincare Recurrence theorem the set of recurrence points are dense in $N_\e$ which means that there is a $(y_2, v_2)\in \text{T}^1Y$ such that after a finite time $T>0$ the geodesic orbit of the flow returns back to $N_\e$, i.e. $\Phi_T(y_2, v_2)\in N_\e$. The orbit $\Phi_t(y_2,v_2)$ where $0\leq t\leq T$ can be approximated by closed geodesic orbit based at some $(y_3,v_3)\in N_\e$ using Anosov's closing lemma (see \cite{dynamics}). Let the projection of this geodesic in $Y$ be the closed geodesic $c$ based at $y_3$. Note that the length of $c$ is larger than the length of the geodesic interval $[y_0,y_1]\subset c_0$ as $(y_0, \dot{c}_0(0))$ and $(y_3,v_3)$ are in an $\e-$neighborhood and thus they fellow travel till $y_1$. Consider the lift $\tilde{c}$ of $c$ in $\H$ based at the point $w_2$ where $w_2$ is chosen to be in the same translate of the fundamental domain as $w_0$. 
+  $$\ell_Y(c) \geq d(w_0, w_1) = d(\tilde{\vp}(0), \tilde{\vp}(z)) \geq d(0,z) + D(z)$$
+  The lift of the pullback $\vp^{-1}(c)$ based at $z_1 = \tilde{\vp}^{-1}(w_2)$ has an endpoint at $\g'z_1 = \vp_*^{-1}(\g) \tilde{\vp}^{-1}(w_2)$ because of equivariance, where $\g'\in \Gamma_X$. 
+  \begin{align*}
+    \ell_X(c) &\leq d(z_1, \g'z_1)\\
+           &\leq  d(z_1,0)+ d(0,z) +  d(z,\g'z_1)\\
+           &\leq \lambda d(\tilde{\vp}(z_1), \tilde{\vp}(0)) + \lambda \e'  + d(0,z) + \lambda d(\tilde{\vp}(z), \tilde{\vp}(\g' z_1)) + \lambda \e'\\
+           &= \lambda d(w_2, w_0) + 2\lambda \e' + d(0,z) + \lambda d(w_1, \g w_2)\\
+           &\leq \lambda \e + 2\lambda \e' + d(0,z) + \lambda T
+  \end{align*}
+  where $(\lambda,\e')$ are the quasi-isometric constants of $\tilde{\vp}$. This means that the ratio:
+  $$\frac{\ell_Y(c)}{\ell_X(c)} \geq \frac{d(0,z) + D(z)}{d(0,z) + \lambda T + \lambda \e + 2\lambda \e'}$$
+  Since $Y$ is compact the time of return $T$ has an upper bound, on the other hand due to lemma \ref{lem:unbounded} one can always choose a $z$ so that $D(z)$ is arbitrarily large. Thus $K( \mathfrak{X}, \mathfrak{Y})>0$.\\
+
+  Using the fact that $K( \mathfrak{X}, \mathfrak{Y})\leq L( \mathfrak{X}, \mathfrak{Y})$ it follows that $K$ is $0$ if and only if $ \mathfrak{X}= \mathfrak{Y}$.
+\end{proof}
+This completes the proof of that $L$ and $K$ are metrics on $\T(S)$. Some more properties of $K$ will be proved later on in this chapter.
+\section{Thurston Stretch Maps} % also add the wrapping around argument calculation
+In this section the Thurston's Stretch maps are constructed and it is shown that they are geodesics in the Lipschitz metric $L$.\\
+
+Let $\Delta$ be an ideal hyperbolic triangle. Let $ \mathscr{F}$ be the (partial) foliation on $\Delta$ where each leaf is a horocycle from one of the vertices of $\Delta$ and let $ \mathscr{G}$ be the (partial) foliation on $\Delta$ where each leaf is a geodesic emerging from one of the vertices of the triangle. Let $C$ be the unfoliated region of $\Delta$. See figure \ref{fig:triangle}. Consider the map $\vp_t:\Delta \to \Delta$ which maps a point $z\in \Delta - C$ which is a distance $r$ away from the central region to the point $\vp_t(z)$ along $ \mathscr{G}$ which is a distance $e^t r$ away from $C$, and $\vp_t$ is constant on $C$.\\
+
+  \begin{minipage}{0.45\textwidth}
+  \centering
+  \def\svgwidth{0.8\textwidth}
+  \import{figures/Chapter2}{thurston.pdf_tex}
+  \captionof{figure}[Foliated Hyperbolic Triangle]{The red curves are leaves of $ \mathscr{F}$ and the blue curves are leaves of $ \mathscr{G}$.}
+  \label{fig:triangle}
+  \end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+   \centering
+   \tiny
+   \def\svgwidth{\textwidth}
+   \import{figures/Chapter2}{spiraling.pdf_tex}
+   \captionof{figure}[Length of boundary using shear]{The red geodesic is $c$, the vertical geodesics are lifts of $\g_i$.}
+   \label{fig:spiraling}
+\end{minipage}
+\begin{proposition}
+  The map $\vp_t$ is an $e^t-$Lipschitz homeomorphism on $\Delta$ and on the boundaries of $\Delta$ are $\vp_t$ achieves the Lipschitz constant $e^t$.
+\end{proposition} 
+\begin{proof}
+  Let $K= e^t$ and assume that the vertices of the triangle lie at $0,1,$ and $\infty$. Since all components of $\Delta - C$ are isometric to each other, consider any component $P$ of $\Delta - C$ and using the isometries of $\H$ assume that the vertex of $\Delta$ in $P$ is at $\infty$ (in the plane model). Explicitly the map $\vp_t$ on $P$ can be written as $\vp_t\big|_P(x+iy) = x + iy^{K}$. Since,
+  \begin{align*}
+    \frac{\|\l(\dd \vp_t\r)_z(\xi)\|^2}{\|\xi\|^2} \leq \frac{\xi_x^2 + K^2\xi_y^2}{\|\xi\|} \leq K^2
+  \end{align*}
+  it follows that $\| \l(\dd \vp_t\r)_z\|^2_{\text{op}}\leq K$, which means that $\vp_t$ is $K$-Lipschitz on $P$ as the edges are exactly stretched by $K$. Since the norm is an isometry invariant it follows that $\| \l(\dd \vp_t\r)_z\|^2_{\text{op}} \leq K$ for all $z\in \Delta - C$.
+\end{proof}
+\begin{definition}
+  Let $\Delta_1$ and $\Delta_2$ be two ideal hyperbolic triangles in $\H$ which share a common geodesic $\g$. Orient $\g$ so that $\Delta_1$ is to the left of $\Delta_2$. Let $z_1$ and $z_2$ be the points on $\g$ where the central regions of $\Delta_1$ and $\Delta_2$ meet $\g$. The \textit{shear} of $\Delta_1$ with respect to $\Delta_2$ along $\g$, denoted $\sh(\Delta_1, \Delta_2)$, is defined as the signed distance between $z_1$ and $z_2$ along the orientation of $\g$. 
+\end{definition}
+\begin{proposition}
+  Let $X$ be a compact hyperbolic surface with geodesic boundary and let $c$ be a boundary component. If $\lambda$ is a maximal lamination on $X$ and $\{\g_i\}_{i=1}^n\in \lambda$ are leaves spiraling onto $c$ then the length of $c$ is determined by a linear combination of the $n$ shear parameters corresponding to the leaves $\g_i$.  
+\end{proposition}
+\begin{proof}
+  The triangles $\Delta_1,\cdots \Delta_n$ in $X$ are such that $\Delta_i$ and $\Delta_i+1$ share the geodesic $\g_{i+1}$ where the index is modulo $n$. In the lift, we get a sequence of triangles (which are translates of $\Delta_i$) converging onto the lift of the geodesic $c$. Consider the case when $\sh(\Delta_i,\Delta_{i+1})>0$ for all $i$ modulo $n$. The picture in figure \ref{fig:spiraling} shows the lift of the triangles with edges $\g_i$ to the universal cover embedded into $\H$ using some developing map. The length of $c$ is the same as the distance between the extreme horocycles of consecutive translates of any $\Delta_i$ (as shown in figure \ref{fig:spiraling}). It follows that length of $c$ will be $\sum_{i=1}^n \sh(\Delta_i, \Delta_{i+1})$ where $\Delta_{n+1}$ is a translate of $\Delta_1$. All other cases can be argued similarly.
+\end{proof}
+
+Given a closed hyperbolic surface $X$ and a maximal lamination $\lambda$ on $X$ with finitely many leaves, the completion of $X-\lambda$ consists of finitely many ideal hyperbolic triangles $\Delta_1,\cdots,\Delta_n$. The edges of these triangles correspond to the leaves of $\lambda$. Let $\sh(\Delta_i, \Delta_j)$ be the shear of $\Delta_i$ with respect to $\Delta_j$ whenever both $\Delta_i$ and $\Delta_j$ have an edge which corresponds to the same leaf of $\lambda$ in $X$. Using the above proposition each of these triangles can be stretched by an $e^t$ Lipschitz map for a fixed $t>0$. Gluing back the stretched triangles in right order with shear coordinates $e^t \sh(\Delta_i,\Delta_j)$, whenever $\Delta_i$ and $\Delta_j$ are glued, gives a hyperbolic surface $X_t$ and an $e^t-$Lipschitz map from $\vp_t:X\to X_t$. If $f:S\to X$ was a marking in $\T(S)$ then the above construction gives a new point in $\vp_t f:S\to X_t$ in $\T(S)$. This gives a ray in $\T(S)$ based at $ \mathfrak{X}$ which we will represent by $ \mathfrak{X}^{\lambda}_t$. Since $\vp_t:X\to X_t$ is $e^t-$Lipschitz it follows that $L( \mathfrak{X}, \mathfrak{X}^{\lambda}_t) \leq t$. From theorem \ref{thm:laminations} it follows that any leaf of $\lambda$ which corresponds to the edge of some $\Delta_i$ spirals onto a closed geodesic $c$ in $X$. The ratio $\ell_{ \mathfrak{X}^\lambda_t}(c)/ \ell_\mathfrak{X}(c)$ is exactly $e^t$ as by the above proposition $\ell_{ \mathfrak{X}}(c)$ is determined by a linear combination of all the shear parameters corresponding to leaves of $\lambda$ which spiral onto $c$ and by construction these shear parameters are scaled by $e^t$. This means that $t\leq K( \mathfrak{X}, \mathfrak{X}^\lambda_t) \leq L( \mathfrak{X}, \mathfrak{X}^\lambda_t) \leq t$. This means that the curve $ \mathfrak{X}^\lambda_t$ is a geodesic in Thurston's metric. This ray is called the \textit{Thurston Stretch ray} and the map $\vp_t:X\to X_t$ is called a stretch map. This construction has more subtleties when the lamination is allowed to have infinitely many leaves. For the general construction see \cite{thurston}. We summarize the general case of the discussion above in the following theorem:
+\begin{theorem}[Stretch Rays are Geodesics]
+  Let $\mathfrak{X}\in \T(S)$ and $\lambda$ be a maximal geodesic lamination on $X$. Then the stretch ray $ \mathfrak{X}^\lambda_t$ based at $ \mathfrak{X}$ is a geodesic in both the metrics $L$ and $K$.
+\end{theorem}
+For a better understanding of stretch maps it is good to look at them explicitly for some hyperbolic surface.
+\begin{exmp}[Stretch Maps on Pants]
+  Let $X$ be a hyperbolic pair of pants with geodesic boundary of lengths $\ell_1, \ell_2,\ell_3$. By a simple area argument, any maximal lamination $\lambda$ on $X$ cuts it into 2 triangles $\Delta_1, \Delta_2$. The goal of this example is to observe how does a horocycle $h$ on $X$ change under the stretch map. This is what I mean: in the universal cover the triangles $\Delta_1$ and $\Delta_2$ lift to triangles and let $\tilde{h}$ be a segment of a horocycle, as in figure \ref{fig:pants-stretched}, starting from an edge of $\Delta_1$ and ending at the lift of the boundary component of length $\ell_1$. In this particular case, $\tilde{h}$ is a horizontal segment $\Im(z) = 1$ and without loss of generality assume that it starts from $z= i$, see figure \ref{fig:pants-stretched}. Let $h$ be the corresponding curve in $X$. We want to understand two things: (a) how does the length of $h$ change under $\vp_t$ and (b) how does the image of $h$ ``wrap around" the boundary in $X$? Denote the shear of the two triangles with respect to each edge as $\a,\b,\g$. First we calculate the real part of vertices of the triangles with vertical edges. Let $u_0 = 0$ and $v_0 = -1$ and $u_n,v_n$ be alternating labels for the vertices, then 
+  \begin{align*}
+    u_n = -v_{n-1} - e^{-n\a - (n-1)\b},\ n\geq 1\\
+    v_n = -u_n - e^{-n\a - n\b},\ n\geq 0
+  \end{align*}
+  The sequence $(u_0,v_0,u_1,v_1,\cdots)$ converges to the endpoint $x_0$ of the lift of the boundary of length $\ell_1$ which corresponds to the series:
+  \begin{align*}
+    x_0 = -\sum_{n\geq 0} e^{-n\a -n\b} - \sum_{n\geq 1} e^{-n\a -(n-1)\b} = -\frac{1+e^{-\a}}{1-e^{-\ell_1}}
+  \end{align*}
+  where $\ell_1 = \a+\b$ is used. The length of $h$ is
+  $$\ell(h) = \frac{1+e^{-\a}}{1-e^{-\ell_1}}$$
+  Since this is a decreasing function and the half leaf of the horocycle $h$ is again mapped to a half leaf of a horocycle, it follows that under the stretch map the length of $h$ decreases as both $\ell_1$ and $\a$ are stretched by $e^t$. This answers the first question.\\
+  \begin{figure}[t]
+    \centering
+    \tiny
+    \def\svgwidth{\textwidth}
+    \import{figures/Chapter2}{pants-stretching.pdf_tex}
+    \caption[Triangulation of Pants]{Triangulation of pants.}
+    \label{fig:pants-stretched}
+  \end{figure}
+  To understand the second question we need to figure out a way to quantify what it means to ``wrap around" a boundary component on Pants. Let $C$ be the unique perpendicular between the boundary of length $\ell_1$ and any one of the other boundaries. The preimage $p_X^{-1}(C)$ is a collection of circular arcs which are perpendicular to the line $\Re(z) = x_0$. Each component of $p_X^{-1}(C)$ intersects $\tilde{h}$ atmost once and moreover only finitely many components intersect $\tilde{h}$. I will say that $h$ wraps around the boundary $n-$times if it intersects $p^{-1}_X(C)$ at $n-$points. Let $\tilde{C}_0$ be the particular lift of $C$ such that any other lift with a smaller radius does not intersect $\tilde{h}$. Such a $\tilde{C}_0$ can be chosen as only finitely many of the lifts intersect $\tilde{h}$. Explicitly the components of $p^{-1}_X(C)$ can be indexed by $n\in \Z$ so that the equation of $\tilde{C}_n$ is
+  $$(x-x_0)^2 + y^2 = R^2e^{2n\ell_1}$$
+  where $R$ is the radius of $\tilde{C}_0$. By construction $\tilde{C}_n$ intersects $\tilde{h}$ only for $n\geq 0$. If $\tilde{C}_n$ intersects $\tilde{h}$ then it follows that
+  \begin{align*}
+    (x-x_0)^2 = R^2e^{2n \ell_1} - 1 
+  \end{align*}
+  The first lift $\tilde{C}_N$ with $N>0$ which does not intersect $\tilde{h}$ is such that the intersection point of $\tilde{C}_N$ with $\Im(z)=1$ has strictly positive real part. Thus,
+  \begin{align}
+    x_0^2 < R^2 e^{2N \ell_1} -1 \implies N> \frac{1}{2\ell_1} \log\l(\frac{x_0^2 + 1}{R^2}\r)
+  \end{align}
+  This means that $\tilde{C}_n$ intersects $\tilde{h}$ if and only if 
+  $$0 \leq n \leq \bigg\lceil \frac{1}{2\ell_1} \log\l(\frac{x_0^2 + 1}{R^2}\r)\bigg\rceil$$
+  Note that the right hand side is a decreasing function of the shear parameters $\a$ and $\b$, implying that the number of intersection points of $p^{-1}_X(C)$ and $\tilde{h}$ decreases as the shear increases. Thus the stretch map $\vp_t$ ``unwraps" $h$ around the boundary of length $\ell_1$. 
+  \begin{figure}[h]
+    \centering
+    \def\svgwidth{\textwidth}
+    \import{figures/Chapter2}{pants-stretch.pdf_tex}
+    \caption[Stretch maps on Pants]{This picture summarizes the entire discussion above. The stretch maps expands the boundary by $e^t$, decreases the length of $h$ while unwrapping it around the boundary.}
+  \end{figure}
+\end{exmp}
+\begin{rem}
+  Another interesting thing to take note of is that the stretch map is affine on the boundary of any hyperbolic surface $X$. This follows from the fact that in the vertical lift of the boundary the stretch map restricts to the map $x_0+iy \mapsto x'_0+iy^K$ where $K=e^t$ (see figure \ref{fig:affine}). This corresponds to the affine map $x\mapsto Kx$ on the affine universal cover of the boundary component in $X$. 
+\end{rem}
+\begin{figure}[h]
+  \centering
+  \tiny
+  \def\svgwidth{\textwidth}
+  \import{figures/Chapter2}{affine.pdf_tex}
+  \caption[Stretch Maps on the boundary]{The stretch map restricts to an affine map on the boundary.}
+  \label{fig:affine}
+\end{figure}

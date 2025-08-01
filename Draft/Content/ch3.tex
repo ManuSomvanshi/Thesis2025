@@ -1,0 +1,294 @@
+\chapter{Orthogeodesic Foliation, Arc Complex, and Dilation Rays}
+In this chapter I will give the construction of \textit{Dilation Rays} in the Teichm\"{u}ller space of a closed surface $S$ given a geodesic lamination $\lambda$, as done in \cite{farre}. Our main focus will be on the special case when $\lambda$ only contains simple closed geodesics which, by theorem \ref{thm:laminations}, can only have finitely many such leaves. Such geodesic laminations are called \textit{multicurves}. In the case when $\lambda$ is a pants decomposition of $S$ it is shown that the corresponding dilation rays are Thurston geodesics.\\
+
+Given a closed surface $S$ of genus $g\geq 2$ let $f:S\to X$ be a hyperbolic marking. Let $\lambda$ be a geodesic lamination on $X$ consisting of only simple closed geodesics and $Y$ be the completion of a component of $X-\lambda$. For arbitrary geodesic laminations $Y$ will be a crowned surface, but in our specific case $Y$ is just a surface with boundary. Let $\Sigma$ be the underlying topological surface corresponding to $Y$. The construction of the following objects for arbitrary laminations is almost exactly the same as what is presented here and can also be found in \cite{farre}. 
+\section{Orthogeodesic Foliation}
+\begin{definition}
+  The \textit{valency} of a point $y\in Y$ is the cardinality of the set $\{p\in \pa Y\ |\ d(y,p) = d(y, \pa Y)\}$. The \textit{spine} of a hyperbolic surface is defined as $\Sp(Y) = \{y\in Y\ |\ \text{valency of}\ y\geq 2\}$. Further let $\Sp_k(Y)$ be the set of all points in $\Sp(Y)$ with valency exactly $k$.
+\end{definition}
+The spine can be thought of as a graph with vertices being points $y\in \Sp(Y)$ with valency strictly greater than $2$ and geodesic edges $e$ being the arcs connecting vertices where each point is of valency exactly $2$. The generic vertex of the spine is of valency $3$ as given three geodesics in $\H$ such that the half planes bounded by them are disjoint then there is always a point equidistant from all three geodesics. Points of valency larger than $3$ occur when there is more symmetry in the surface.\\
+
+\begin{exmp}\label{exmp:pants}
+For example, consider the pair of pants of boundary lengths $(\ell_1,\ell_2,\ell_3)$. There are three cases of the pants: 
+\begin{enumerate}
+  \item The lengths satisfy the strict triangle inequality: $\ell_i + \ell_j< \ell_k$ where $(ijk)$ is a permutation of $(123)$.
+  \item One of the lengths is strictly larger than sum of the other two: $\ell_1>\ell_2+ \ell_3$.
+  \item One of the lengths is the sum of the other two: $\ell_1 = \ell_2 + \ell_3$.
+\end{enumerate}
+In the first two cases the spine consists of only two vertices of valency $3$ and edges, while in the last case there is single vertex of valency $4$. These are explicitly shown in figure \ref{fig:pants-spine}.
+\begin{figure}[h]
+\centering
+\def\svgwidth{0.8\textwidth}
+\import{figures/Chapter3}{spine.pdf_tex}
+\caption[Spine on Pants]{This shows the spine on pants in the three cases discussed above.}
+\label{fig:pants-spine}
+\end{figure}
+\end{exmp}
+\begin{proposition}
+  The surface $Y$ is homotopically equivalent to $\Sp(Y)$.
+\end{proposition}
+\begin{proof}
+  Consider the map $r:Y\to \Sp(Y)$ which maps $y\in Y-Sp(Y)$ to the point of intersection $r(y)\in Sp(Y)$ of the extension of the perpendicular geodesic $\a_y$ from $y$ to $\pa Y$ realizing the distance $d(y,\pa Y)$ and the spine; and $r$ is identity on the spine. The fibers of $r$ are geodesics perpendicular to $\pa Y$ at both ends. For any $y,y'\in Y-\Sp(Y)$ the geodesics $\a_y$ and $\a_{y'}$ are either disjoint or one is contained in the other. This map is continuous as any open interval $I$ of an edge of the spine the set $r^{-1}(I)$ is an open strip on the surface.\\
+
+  For any $y\in Y$ let $\g_y(t)$ be a unit speed parametrization of a sub-arc of $r^{-1}(r(y))$ such that $\g_y(1) = r(y)$ and $\g_y(0) = y$. Define the homotopy $H(y,t) = \g_y(t)$. Then $H(y,t) = \g_{y}(t)$ is a homotopy with $H(y,1) = r(y)$, $H(y,0)= y$, and $H\big|_{\Sp(Y)}(y,t) = y$. Thus $H$ is a deformation retract from the identity map to $i\circ r$, where $i:\Sp(Y)\to Y$ is the natural inclusion. Thus $Y$ is homotopically equivalent to it's spine.
+\begin{figure}[ht]
+\centering
+\small
+\def\svgwidth{0.7\textwidth}
+\import{figures/Chapter3}{deformation.pdf_tex}
+\caption[Fibers of $r$]{Orthogeodesic foliation near an edge of the spine.}
+\label{fig:deformation}
+\end{figure}
+\end{proof}
+Given any two points $y,y'\in \Sp_2(Y)$ which lie on the same edge $e$ of the spine the arcs $r^{-1}(y)$ and $r^{-1}(y')$ are homotopic to each other relative to the boundary $\pa Y$. A dual arc $\a_e$ is the homotopy class relative to $\pa Y$ of fibers of $r$ corresponding to $e$. There is a special representative of the class $\a_e$ which is the fiber perpendicular to $e$ as well as the boundary. This representative will also be denoted by $\a_e$. Denote by $\underline{\a} = \bigcup_{e\subset \Sp(Y)}\a_e$, this is called the dual arc system.\\
+
+If $\tau$ is an arc in $Y$ transverse to the fibers of $r$ such that $r(\tau)\subset e$ for some edge $e$ of $\Sp(Y)$ then define a measure $\mu_\tau$ on $\tau$ by defining the measure of any sub-arc $c$ to be length of the curve on $\pa Y$ obtained by continuously deforming $c$ to the boundary keeping each point of $c$ on the same fiber of $r$. For an arbitrary transverse arc $\tau$, it can be decomposed into finitely many components $\tau_i$ such that $r(\tau_i) \subset e_i$ for some edge $e_i$ and define $\mu_{\tau} = \sum_i \mu_{\tau_i}$. See figure \ref{fig:deformation} for a cartoon of this construction.
+\begin{proposition}
+  $\mu$ defines a transverse measure on the fibers of $r$. 
+\end{proposition}
+\begin{proof}
+  The measure is well defined as no matter what homotopy is used the measure is going to be the length of the arc between the end-points of the corresponding fibers at the boundary. It is clear that given arcs $\tau'\subset \tau$ it follows that $\mu_\tau\big|_{\tau'} = \mu_{\tau'}$ as the length at boundary is going to be the same for both.\\
+
+  Given two arcs $\tau$ and $\tau'$ which are homotopic relative to the fibers of $r$ (i.e. each point remains on the same fiber of $r$) the measures of $\mu_\tau$ and $\mu_{\tau'}$ are the same as being ``homotopic relative to fibers of $r$" is an equivalence relation. 
+\end{proof}
+\begin{definition}[Orthogeodesic Foliation on $Y$]
+  The measured foliation $ \mathcal{O}(Y,\pa Y)$ on $Y$ where the leaves are fibers of $r$ and the transverse measure is defined as above by $\mu$. This foliation has singularities of order $k-2$ at the vertices of $\Sp(Y)$ of valency $k$.
+\end{definition}
+\begin{rem}
+  The measured foliation defined above is not a smooth foliation as at the spine the leaves are not smooth. But we only care about measured foliations upto homotopy and there is a smooth measured foliation in the same homotopy class of $ \mathcal{O}(Y,\pa Y)$.
+\end{rem}
+\begin{definition}[Orthogeodesic foliation on X]
+  Given a closed surface $X$ with a multicurve $\lambda$, the foliation $ \mathcal{O}_\lambda(X)$ obtained by constructing the orthogeodesic foliations $ \mathcal{O}(Y, \pa Y)$ for each component $Y$ in $X-\lambda$ and then gluing them back together without any twisting. 
+\end{definition}
+Calderon and Farre also show that $ \mathcal{O}_\lambda : \T(S) \to \mathcal{MF}(S)$ is a homeomorphism onto it's image (see \cite{farre}).\\
+
+\begin{figure}[h]
+\centering
+\def\svgwidth{0.8\textwidth}
+\import{figures/Chapter3}{filling-arcs.pdf_tex}
+\caption[Dual arc system of Pants]{This figure shows the dual arc system for the three cases of hyperbolic pants discussed earlier.}
+\label{fig:dual-arc}
+\end{figure}
+\section{Arc Complex and Filling Arcs} 
+Let $S,\ X,\ Y,\ \Sigma$ be as in the previous section. An arc $\a$ in $\Sigma$ with end points in $\pa \Sigma$ is said to \textit{essential} if it cannot be homotopically deformed to the boundary.   
+\begin{definition}
+  An \textit{arc system} $\underline{\a} = \bigcup_i \a_i$ on $\Sigma$ is a union of homotopy classes of simple essential arcs such that there is a choice of representative arcs $a_i$ for the classes $\a_i$ in the arc system such that $a_i\cap a_j = \emptyset$. Often we abuse notation and denote just the arcs $a$ by $\a$ as well. 
+\end{definition}
+\begin{definition}
+  A \textit{weighted arc system} $\underline{A}$ on $\Sigma$ is formally denoted by $\sum_i c_i \a_i$ where $\{\a_i\}$ forms an arc system and $c_i\in \R^+$. 
+\end{definition}
+The dual arc system $\underline{\a}(Y)$ is an example of an arc system. An example for a weighted arc system is $\underline{A}(Y) = \sum_{e\subset \Sp(Y)} \mu_e(e) \a_e$. Note that if $Y$ and $Y'$ represent the same point in $\T(\Sigma)$ then the isometry preserves the weighted dual arc system. This means that $\underline{A}(\square)$ can be defined as a function on $\T(S)$. Now we describe the co-domain and range of this function. An arc system $\underline{\a}$ on $Y$ is said to be \textit{filling} if every component of $Y-\underline{\a}$ is a topological disk. 
+\begin{proposition}
+  The dual arc system is a filling arc system.
+\end{proposition}
+\begin{proof}
+  It is enough to show that each component $C$ of $Y- \underline{\a}(Y)$ is contractible. Using restriction of the map $r$ to $C$ it can be deformation retracted onto the component of the spine in $C$. Since in each component $C$ there can be exactly one vertex of the spine, the set $\Sp(Y)\cap C$ is a star shaped graph and thus can be contracted to a single point. This proves that $C$ is contractible.
+\end{proof}
+\begin{definition}[Arc Complex of $\Sigma$]
+  The arc complex $ \mathscr{A}(\Sigma, \pa \Sigma)$ of $\Sigma$ is a simplicial complex defined as follows:
+  \begin{enumerate}
+    \item The $0-$simplexes are homotopy classes of simple essential arcs.
+    \item The vertices $(\a_1,\cdots, \a_n)$ span an $n-$simplex if $\underline{\a} = \bigcup_{i=1}^n \a_i$ is an arc system.
+  \end{enumerate}
+  The sub-complex $ \mathscr{A}_\infty(\Sigma, \pa \Sigma)$ of $ \mathscr{A}(\Sigma, \pa \Sigma)$ only has simplexes whose vertices form a non-filling arc systems. The compliment of the non-filling arc complex is called the filling arc space and denoted $ \mathscr{A}_{\text{fill}}(\Sigma, \pa \Sigma)$. The geometric realization space of $\mathscr{A}_{\text{fill}}(\Sigma, \pa \Sigma)$, denoted $|\mathscr{A}_{\text{fill}}(\Sigma, \pa \Sigma)|\times \R^+$, is the space of all weighted filling arc systems.
+\end{definition}
+\begin{exmp}
+  Again as an example we look at the pair of pants to construct an example of the arc complex. By proposition 2.2 in \cite{primer} we know that any two arcs connecting the same boundary components are homotopic to each other. Thus the arc complexes have exactly $6$ vertices: one homotopy class of arcs for each pair of boundary components and one homotopy class of arcs for a single boundary component. The arc complex $ \mathscr{A}(S_{0,3}, \pa S_{0,3})$ is shown in figure \ref{fig:pants-arc-complex}.
+\end{exmp}
+\begin{figure}[h]
+\centering
+\def\svgwidth{0.5\textwidth}
+\import{figures/Chapter3}{arc-complex.pdf_tex}
+\caption[Arc complex of a Pants]{Arc complex of the topological pants $S_{0,3}$. The red colored boundary of the complex in this is the non-filling sub-complex.}
+\label{fig:pants-arc-complex}
+\end{figure}
+
+\begin{theorem}[\cite{luo, farre}]
+  The map $\underline{A}:\T(\Sigma)\to |\mathscr{A}_{\text{fill}}(\Sigma, \pa \Sigma)|\times \R^+$ which maps $ \mathfrak{Y}$ to the dual arc system $\underline{A}(Y)$ is a homeomorphism. 
+\end{theorem}
+\begin{rem}
+Corollary 1.4 in Luo's paper proves this result for ``ideal triangulation" of surfaces with boundary which cuts the surfaces into right angled hexagons. This is the generic case for the dual arc system as in the generic case the weights $\mu_e(e)$ match with the radius coordinate $z(e)$ defined by Luo. Calderon and Farre proved this result as stated here in greater generality for crowned surfaces. 
+\end{rem}
+\section{Dilation Rays}
+\begin{definition}[Dilation Rays]
+  Let $ \mathfrak{X}\in \T(S)$ and $\lambda$ be a multicurve in $X$. Consider the completion $Y_1,\cdots, Y_n$ of the components of $X-\lambda$ and the corresponding points $ \mathfrak{Y}_i\in \T(\Sigma_i)$. Then $\underline{A}^{-1}\l(e^t\underline{A}( \mathfrak{Y}_i)\r)$ defines a curve in $\T(\Sigma_i)$ denoted by $ \mathfrak{Y}_i(t)$. Then gluing all $Y_i(t)$ together without any twisting gives a curve $ \mathfrak{X}^\lambda_t$ in $\T(S)$. This curve is called the \textit{Dilation ray} based at $X$.
+\end{definition}
+\begin{rem}
+  The marking on $Y_i$ is determined by the marking on $X$ by restrictions. The marking on $X^\lambda_t$ is determined by the markings on each $Y_i(t)$. If $f_i:\Sigma_i \to Y_i(t)$ are markings then there is a natural choice for $f:S \to X^\lambda_t$ which comes from the universal property of the pushout in the category of topological spaces. By construction of the inverse map $\underline{A}^{-1}$, markings on $ \mathfrak{Y}_i$ are such that the arc $\a_e$ in $Y_i$ maps to the special representative of the dual arc in $Y_i(t)$.  
+\end{rem}
+A natural question to ask is whether dilation rays are geodesics? This question is partially answered in this section. 
+\begin{lemma}\label{lem:dilation}
+  If for each $t>0$ there exists $e^t-$Lipschitz homotopy equivalence $Y_i\to Y_i(t)$ which homeomorphically maps boundary to boundary and preserves the special representatives of the dual arc system upto homotopy relative to the endpoints and expands each boundary component of $Y_i$ by a factor of $e^t$ for all $i$, then the dilation ray $ \mathfrak{X}^\lambda_t$ is a Thurston geodesic.
+\end{lemma}
+\begin{proof}
+  Let $Y_i$ have boundary lengths $(\ell_1, \cdots, \ell_n)$ in the decomposition $X-\lambda$ and then $ \mathfrak{Y}_i(t) = \underline{A}^{-1}(e^t\underline{A}( \mathfrak{Y}_i))$ is the surface with boundary lengths $e^t\cdot(\ell_1,\cdots,\ell_n)$ because of theorem 1.2 in \cite{luo}. By assumption there is an $e^t-$Lipschitz map $\vp_i^t:Y_i\to Y_i(t)$ which preserves the special representatives of the dual arcs upto homotopy relative to endpoints and stretches the boundary by a factor of $e^t$. Since the endpoints of the dual arcs are fixed on the boundary of each $Y_i$ by $\vp_i$, gluing all $(Y_i(t), \vp_i^t f_i)$ without any twisting results in a marking $(X^\lambda_t,\vp_t f)$, where $\vp_t$ is the pushout of all $\vp^t_i$, and $[(X^\lambda_t, \vp_tf)]$ is exactly the dilation ray $ \mathfrak{X}^\lambda_t$. 
+  Let $c$ be any closed curve in $X$, and $c'$ be the arc of $c$ which lies in $Y$. Since $\vp_t$ is $e^t$ Lipschitz the length of $c'$ stretches by less than $e^t$. This means that after gluing the length of $c$ also increases by a factor which is less than $e^t$. But since the multicurve $\lambda$ stretches exactly by $e^t$ we must have $K( \mathfrak{X}, \mathfrak{X}^\lambda_t) = t$.
+\end{proof}
+From here I will call maps which satisfy assumption of \ref{lem:dilation} \textit{dilation maps}. Now if we can construct a dilation maps for any hyperbolic surface $Y$ with geodesic boundary we can conclude that dilation rays are indeed Thurston geodesics. But this construction is not very easy. In the remainder of this section the construction of such dilation maps for hyperbolic pair of pants is given in order to prove the following result.
+\begin{theorem}\label{thm:main}
+  If $ \mathfrak{X}\in \T(S)$ and $\lambda$ is a pants decomposition of $S$, then the dilation ray $ \mathfrak{X}^\lambda_t$ is a Thurston geodesic.
+\end{theorem}
+Here is a rough outline of the construction. Due to Thurston we already have stretch maps which stretch the boundary of pants by a factor of $e^t$, but do not preserve the dual arc representatives. The key idea in the construction is to take the ``average" of two stretch maps defined over different triangulations with opposite orientations and show that this average map preserves the dual arc representatives. First we define the average of Lipschitz map as done in \cite{kassel}.
+\begin{proposition}[Barycenter in $\H$, Lemma 2.11 in \cite{kassel}]
+  Let $I = \{1,\cdots, k\}$ for $k\geq 1$ and $\underline{r} = \{r_i\in \R^+\}_{i\in I}$ are such that $\sum_i r_i = 1$. Let 
+  $$\l(\H\r)^I_{\underline{r}} = \{(p_i)_{i\in I}\ |\ \sum_{i\in I}r_i d(p_1,p_i)^2 <\infty\}$$ 
+  Then there is a map
+  $$\mathbf{m}_{\underline{r}}: \l(\H\r)^I_{\underline{r}} \to \H$$
+  which maps $(p_1,\cdots, p_n)$ to the minimizer of $\sum_i r_i d(\cdot,p_i)^2$. Moreover, $\mathbf{m}_{\underline{r}}$ has the following properties:
+  \begin{enumerate}
+    \item $\mathbf{m}_{\underline{r}}$ is $r_i-$Lipschitz in the $i-$th entry, i.e.
+      $$d(\mathbf{m}_{\underline{r}}(p_1,\cdots,p_k), \mathbf{m}_{\underline{r}}(q_1,\cdots, q_n))\leq \sum_i r_i d(p_i, q_i)$$
+    \item $\mathbf{m}_{\underline{r}}$ is $\PSL-$equivariant.
+    \item $\mathbf{m}_{\underline{r}}$ is diagonal, i.e. $\mathbf{m}_{\underline{r}}(p,\cdots, p) = p$.
+    \item If $\sigma$ is a permutation of $I$ then $\mathbf{m}_{(r_{\sigma(1)},\cdots, r_{\sigma(k)})}(p_{\sigma(1)},\cdots, p_{\sigma(k)}) = \mathbf{m}_{\underline{r}}(p_1,\cdots, p_k)$.
+  \end{enumerate}
+\end{proposition}
+\begin{exmp}
+  Consider any two points $z, w\in \H$ and let $\underline{r} = (1/2,1/2)$. Since barycenter map is equivariant we apply an isometry $g$ that $gz,gw$ lie on the imaginary axis with $gw=i$ and $\Im(z)>1$. Then $\mathbf{m}_{\underline(r)}(i,gz)$ is the point which minimizes the function 
+  $$\Phi(p) = \frac{d(p,gz)^2 + d(p,i)^2}{2}.$$
+  Since $\frac{1}{2}d(p,gz)^2, \frac{1}{2}d(p,i)^2\leq \Phi(p)$ it is easy to see that $\mathbf{m}_{\underline{r}}(i,gz)$ is just the midpoint of the geodesic $[i,gz]$. Using the equivariance it follows that $\mathbf{m}_{\underline{r}}(w,z)$ is the midpoint of the geodesic connecting $[w,z]$.
+\end{exmp}
+\begin{proposition}[Barycenter of Lipschitz Maps, Lemma 2.13 in \cite{kassel}]\label{pro:kassel}
+  Let $I$ and $\underline{r}$ be as in the previous proposition. Consider $X\subset \H$, $p\in X$, and Lipschitz maps $f_i:X\to \H$ for $i\in I$. The map $f:X\to \H$ defined by $p\mapsto \mathbf{m}_{\underline{r}}(f_1(p),\cdots, f_k(p))$. Then $\text{Lip}(f) \leq \sum_i \text{Lip}(f_i)$.
+\end{proposition}
+Let $f_i:Y\to Y'$ be $K-$Lipschitz homeomorphisms between hyperbolic surfaces which are pairwise homotopic. Then let $\tilde{f}_i:\tilde{Y}\to \tilde{Y'}$ be their lifts such that $\tilde{f}_i(\tilde{y})$ lie in the same fundamental domain of $Y'$. Then if $\tilde{f}:\tilde{Y}\to \tilde{Y'}$ is the barycenter of $\tilde{f}_i$ with $\underline{r} = (1/k,\cdots, 1/k)$, then using the equivariance of $\tilde{f}_i$ and $\mathbf{m}$, this map can be pushed down to a Lipschitz map $f:Y\to Y'$ with Lipschitz constant less than $K$. This is well defined due to the equivariance of $\mathbf{m}$, as any other choice of lifts are related by a deck transform.\\
+
+Let $Y$ be a hyperbolic pair of pants and let $\mu$ be a maximal lamination on $Y$. Let $I_Y:Y\to Y$ be the map which cuts the pants into two isometric hexagons $H_1$ and $H_2$ and pastes them back together inside out. This isometry is orientation reversing and maps $\mu$ to another maximal lamination $\mu'$ of $Y$. See figure \ref{fig:orientation-reversing}. The shear parameters of the new maximal lamination $\mu'$ have the same magnitude as the shear parameters as $\mu$ but with the signs inverted as the sign is dependent on the orientation of the triangles about the geodesic changes.
+\begin{figure}[h]
+\centering
+\def\svgwidth{0.8\textwidth}
+\import{figures/Chapter3}{orientation-reversing.pdf_tex}
+\caption[Orientation reversing map on Pants]{The action of the map $I_Y$.}
+\label{fig:orientation-reversing}
+\end{figure}
+\begin{definition}[Construction of the average stretch map]
+  Let $Y$ be a pair of pants and $\mu$ be some maximal lamination on $Y$. The we can construct another maximal lamination $\mu'$ on $Y$ such that the shear parameters have the same magnitude and opposite sign. The there are stretch maps $\vp^\mu_t:Y\to Y^\mu(t)$ and $\vp^{\mu'}_t:Y\to Y^{\mu'}(t)$. Since $Y^{\mu'}$ and $Y^\mu$ are the same boundary lengths, the markings $(Y^\mu(t), \vp^\mu_tf)$ and $(Y^{\mu'}(t),\vp^{\mu'}(t)f)$ represent the same point in $\T(\Sigma)$, which will be denoted by just $ \mathfrak{Y}(t)$. Define $\psi^\mu_t:Y\to Y^\mu(t)$ to be the barycenter of $\vp_t^\mu$ and $I\vp_t^{\mu'}$ with $\underline{r} = (1/2,1/2)$, where $I:Y^{\mu'}(t)\to Y^\mu(t)$ is an isometry compatible with the markings. 
+\end{definition}
+\begin{proposition}
+  The map $\psi^\mu_t:Y\to Y(t)$ is an $e^t-$Lipschitz map.
+\end{proposition}
+\begin{proof}
+  From proposition \ref{pro:kassel} it follows that $\text{Lip}(\psi^\mu_t)\leq e^t$. Since the stretch maps achieve the Lipschitz constant $e^t$ at the boundary, it is easy to see that so does $\psi^\mu_t$ as all points in consideration lie along the same boundary geodesic: 
+  \begin{align*}
+    d(\widetilde{\psi^\mu_t}(y_1), \widetilde{\psi^\mu_t}(y_2)) &= d(\widetilde{\psi^\mu_t}(y_1), \widetilde{\vp^{\mu'}_t}(y_1)) \pm d(\widetilde{\vp^{\mu'}_t}(y_1), \widetilde{\vp^\mu_t}(y_2)) + d(\widetilde{\psi^\mu_t}(y_2), \widetilde{\vp^{\mu}_t}(y_2))\\
+        &= \frac{1}{2}\l(d(\widetilde{\vp^\mu_t}(y_1), \widetilde{\vp^{\mu}_t}(y_2)) + d(\widetilde{\vp^{\mu'}_t}(y_1), \widetilde{\vp^{\mu'}_t}(y_2))\r)\\
+                          &= e^td(y_1,y_2).
+  \end{align*}
+\end{proof}
+
+\begin{proposition}
+  The map $\psi^\mu_t$ is an affine homeomorphism on the boundary of the pants.
+\end{proposition}
+\begin{proof}
+  We prove a much more general statement which implies this claim. Suppose that $iy_1, iy_2$ are two points on the imaginary axis in $\H$. Then the barycenter of these two points weighed equally is the mid point along the geodesic joining them which in this case is $i\sqrt{y_1y_2}$. An affine map on the imaginary axis is of the form $ iy\mapsto iby^a$ where $a,b\in \R$. If we have any two affine maps on imaginary axis $iy \mapsto ib_1y^{a_1}$ and $iy\mapsto ib_2y^{a_2}$ then the barycenter map would be of the form $iy\mapsto i\sqrt{b_1b_2}y^{\frac{a_1+a_2}{2}}$, which is again affine. This completes the proof as $\vp^\mu_t$ and $\vp^{\mu'}_t$ are affine maps on the boundary. 
+\end{proof}
+In order to prove that $\psi^\mu_t$ preserves the dual arc representatives we define a few tools and objects and re-state the problem in terms of these. 
+\begin{definition}[Teichm\"{u}ller space of markings affine at boundary]
+  Let $[(Y_0, f_0:\Sigma\to Y_0)]\in \T(\Sigma)$. Denote the boundary components of $Y_0$ by $b_1,\cdots, b_n$. Then define
+  \begin{align*}
+    \T_\pa(Y_0) = \{(Y,\fs:Y_0\to Y)\ |\ &\fs\ \text{is an orientation preserving homotopy equivalence,}\\ &\fs\big|_{b_i}\ \text{is an affine homeomorphism for each component} \}/\sim
+  \end{align*}
+  where $(Y,\fs)\sim (W,\gs)$ if there is an isometry $I:Y\to W$ such that $I\fs$ is homotopic to $\gs$ relative to the boundary $\pa Y_0$, i.e. it fixes the boundary pointwise throughout the homotopy. We will denote elements in this space by $ \mathfrak{Y}_\pa = [(Y,\fs)]_\pa$.
+\end{definition}
+There is a natural map $\pi: \T_\pa(Y_0) \to \T(\Sigma)$ given by $[(Y,\fs)]_\pa \mapsto [(Y, \fs f_0)]$. 
+\begin{proposition}\label{pro:surjective}
+  $\pi$ is a surjective map.
+\end{proposition}
+\begin{proof}
+  Given any $[(Y,f)]\in \T(\Sigma)$ there is a ``straight line" homotopy on the lift of boundary components in the universal cover from $\widetilde{ff_0^{-1}}\big|_{\tilde{b}_i}$ to an affine homeomorphism on $\tilde{b}_i$ for each $i$. This gives us a homotopy $H: \pa Y_0\times [0,1]\to \pa Y$ between $ff_0^{-1}\big|_{\pa Y_0}$ and an affine homeomorphism on the boundary. By corollary 1.4 of \cite{kirby} there is a homotopy $G:Y_0\times [0,1]\to Y$ such that $G_0 = ff_0^{-1}$ and $H_t = G_tH_0$. The map $\fs = G_1$ is affine on the boundary and is a homeomorphism. Then $\pi([(Y,\fs_s)]_\pa) = \mathfrak{Y}$.
+\end{proof}
+Suppose $ \mathfrak{Y} = [(Y,f)]\in \T(\Sigma)$ and without loss of generality assume that $ff_0^{-1}:Y_0\to Y$ is affine on the boundary. Let $\underline{\a}(Y)$ and $\underline{\a}(Y_0)$ be the union of the special representatives of the dual arc system in $Y$ and $Y_0$ respectively. Then $\Sigma - f_0^{-1}(\underline{\a}(Y_0))$ and $\Sigma - f^{-1}(\underline{\a}(Y))$ are both disjoint union of disks with punctures on the boundary and there are quotient maps $q_0,q$ from these to $\Sigma$ respectively. Cutting $\Sigma$ along $f_0^{-1}(\underline{\a}(Y_0))$ and then applying the quotient map $q$ on these collection of disks, then using the universal property of quotient maps there is a homeomorphism from $\Sigma\to \Sigma$ which maps $f_0^{-1}(\underline{\a}(Y_0))$ to $f^{-1}(\underline{\a}(Y))$. Composing with the markings this gives a homeomorphism $\fs_s:Y_0\to Y$ which preserves the representatives of the dual arcs. This defines a section $s:\T(\Sigma) \to \T_\pa(Y_0)$ which maps $[(Y,f)]$ to $[(Y,\fs_s)]_\pa$.
+% Given any $ \mathfrak{Y} = [(Y,f)]\in \T(\Sigma)$ let $s( \mathfrak{Y})$ to be the equivalence class $ \mathfrak{Y}_\pa = [(Y, \fs_s)]_\pa\in \pi^{-1}( \mathfrak{Y})$ where $\fs_s:Y_0\to Y$ preserves the dual arc representatives (such homeomorphism can always be constructed by cutting the surface along the dual arcs). This defines a section $s:\T(\Sigma)\to \T_\pa(Y)$.
+\begin{definition}[Relative Twist parameter]
+  Suppose $(Y,\fs), (W,\gs)\in \pi^{-1}(\mathfrak{Y})$ and $I:Y\to W$ is an isometry such that $\vp = I\fs$ is homotopic to $\psi = \gs$ via a homotopy $H$. Fix a lift $\tilde{\vp}$ of $\vp$. The homotopy $H$ lifts to a unique homotopy in the universal cover $\tilde{H}:\tilde{Y}_0\times I\to W$ so that $\tilde{H}_0 = \tilde{\psi}$. Consider the boundary component $b_i$ of $Y_0$ and fix a lift of the boundary component $\tilde{b}_i$. For any $\tilde{y}_0\in \tilde{Y}_0$ define the relative twist $\tau_i$ along $b_i$ to be:
+  \begin{align}
+    \tau_i((Y,\fs), (W,\gs)) = d_s(\tilde{H}_0(\tilde{y}_0), \tilde{H}_1(\tilde{y}_0))
+  \end{align}
+  where $d_s$ is the signed distance along the orientation of the boundary components. Since $H_1$ is a lift of $\psi$ we denote it by $\tilde{\psi}$.
+\end{definition}
+
+\begin{proposition}[Relative Twist is well defined]
+  The relative twist $\tau_i$ of the boundary $b_i$ is independent of: 
+  \begin{enumerate}
+    \item the point $\tilde{y}_0$.
+    \item the chosen lift of $\vp$ or the lift of the boundary component $b_i$.
+    \item the homotopy $H$.
+    \item the isometry $I$. 
+  \end{enumerate}
+\end{proposition}
+\begin{proof} 
+  \begin{enumerate}
+    \item This follows directly from the fact that $\fs$ and $\gs$ are affine on the boundary. Since $Y$ and $W$ have the same boundary lengths it follows that $\fs$ and $\gs$ are just rotations. In the universal cover if we choose the lift of $b_i$ to just be imaginary axis, then the affine maps are of the form $z\mapsto k_1z$ and $z\mapsto k_2z$ on the imaginary axis. Consider two points $\tilde{y}_0$ and $\tilde{y}_1$ in the lift $\tilde{b}_i$. Then,
+      \begin{align*}
+        d_s(\tilde{\vp}(\tilde{y}_0),\tilde{\psi}(\tilde{y}_0)) &= d_s(\tilde{\vp}(\tilde{y_0})), \tilde{\vp}(\tilde{y}_1)) + d_s(\tilde{\vp}(\tilde{y_1})), \tilde{\psi}(\tilde{y}_1)) + d_s(\tilde{\psi}(\tilde{y}_1)), \tilde{\psi}(\tilde{y}_0)) 
+      \end{align*}
+      from the discussion above the first and last terms cancel out.
+    \item A change in the lift just corresponds to composition with a deck transform which are isometries, and thus the choice of lift does not matter.  
+    \item Consider two isotopies $H$ and $G$ between $\vp$ and $\psi$. Then we want to show that the unique lifts $\tilde{H}$ and $\tilde{G}$ with $\tilde{H}_0 = \tilde{G}_0 = \tilde{\vp}$ for some fixed lift of $\vp$, have the same endpoint i.e. $\tilde{H}_1=\tilde{G}_1$. Consider the homotopy $F_t = (H_t)^{-1}(G_t)$ is a homotopy from $\text{id}_{\tilde{Y}_0}$ to itself. For any $y_0$ in the boundary component $b_i$ we get a closed loop $F_t(y_0)$. If this loop is non-trivial, then $F_1$ cannot be identity as any essential arc with both endpoints in $b_i$ will not be mapped to itself by $F_1$. Thus $F_t(y_0)$ is a trivial loop on the boundary. By construction, we have $\tilde{H}_0(\tilde{y}_0) = \tilde{G}_0(\tilde{y}_0)$ and $\tilde{H}_1(\tilde{y}_0) = \g\tilde{G}_1(\tilde{y_0})$ where $\g$ is some deck transform. There is a unique lift $\tilde{F}$ so that $\tilde{F}_0 = \text{id}_{\tilde{X}_0}$ which is given by $\tilde{F}_t = (\tilde{H}_t)^{-1}(\tilde{G}_t)$. Since $F_t(y_0)$ is a trivial loop it follows that $\tilde{F}_t(\tilde{y}_0)$ is a trivial loop in $\tilde{Y}_0$ and so $\tilde{F}_1 = \text{id}_{\tilde{Y}_0}$ implying that $\tilde{H}_1(\tilde{y}_0) = \tilde{G}_1(\tilde{y}_0)$. This fixes the lift of $\vp$.
+    \item This just follows from proposition \ref{pro:isometries}, as any other isometry compatible with the markings is homotopic to $I$ and thus has the same lift to the universal cover.
+  \end{enumerate}
+\end{proof}
+\begin{proposition}[Triangle identity]
+  Let $(Y_1,\fs_1), (Y_2,\fs_2), (Y_3,\fs_3)$ lie in the $\pi-$fiber of $ \mathfrak{Y} = [(Y,f)]$. For any boundary component $b_i$ of $Y_0$ the relative twist parameters satisfy the identity:
+  \begin{align*}
+    \tau_i((Y_1,\fs_1),(Y_3,\fs_3)) = \tau_i((Y_1,\fs_1),(Y_2,\fs_2)) + \tau_i((Y_2,\fs_2),(Y_3,\fs_3)).
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  There are isometries $I_1:Y_1\to Y_2, I_2:Y_2\to Y_3$ which are compatible with the markings. If $H$ is the homotopy from $I_1\fs_1$ to $\fs_2$ and $G$ be a homotopy from $I_2\fs_2$ to $\fs_3$. Then the concatenation of the isotopies $F = G*(I_2H)$ is a homotopy from $I_2I_1\fs_1$ to $\fs_3$. Using this homotopy to calculate $\tau_i((Y_1,\fs_1),(Y_3,\fs_3))$, the identity follows from the triangle inequality and the fact that all points lie on the same geodesic.
+\end{proof}
+It is easy to see that $\tau_i$ is a well defined map $\T_\pa(Y)\times \T_\pa(Y)\to \R$ because if $(Y,\fs) \sim (W,\gs)$ in $\T_\pa(Y)$ then their relative twist is zero as $\vp$ and $\psi$ are equal on the boundary.\\ 
+
+\begin{proposition}
+  Let $n$ be the number of boundary components of $Y_0$. The map $\underline{\tau}(\cdot, \mathfrak{Y}_\pa): \pi^{-1}( \mathfrak{Y}) \to \R^n$ which maps some $ \mathfrak{Y'}_\pa$ to it's relative twist parameters is bijective. 
+\end{proposition}
+\begin{proof}
+  Suppose that $\tau_i((Y_1,\fs_1), (Y,\fs)) = \tau_i((Y_2,\fs_2), (Y,\fs))$ for all boundary components $b_i$ then using the triangle identity $\tau_i((Y_1,\fs_1), (Y_2,\fs_2)) = 0$. This means that the isometry $I:Y_1\to Y_2$ is such that $I\fs_1 = \fs_2$ on the boundary. It is possible to construct a homotopy relative to the boundary between them as $\text{Homeo}_0(Y_0,\pa Y_0)$ is path connected. This proves injectivity of $\underline{\tau}$.\\
+  Let $(\tau_1,\cdots,\tau_n)\in \R^n$. Consider the lift $\tilde{\fs}$ of $\fs:Y_0\to Y$ to the universal cover. On each boundary component $\fs$ is affine, let $\widetilde{\pa \fs_i}$ be the restriction on some lift $\tilde{b}_i$ of the boundary component $b_i$. There is a unique isometry $\g\in \PSL$ which fixes $\tilde{b}_i$ and $d_s(\fs(\tilde{y}_0), \g \fs(\tilde{y}_0)) = \tau_i$. Let $\widetilde{\pa \gs_i}$ be $\g \widetilde{\pa \fs_i}$ and let $\tilde{H}$ be a straight line homotopy between $\widetilde{\pa\gs_i}$ and $\widetilde{\pa \fs_i}$. Using the same technique as in \ref{pro:surjective} we get a homeomorphism $\gs:Y_0\to Y$ such that $\gs$ is homotopic to $\fs$ and $\gs\big|_{b_i}p_{Y_0} = p_{Y}\widetilde{\pa \gs_i}$. It follows that $\tau_i((Y,\gs), (Y,\fs)) = \tau_i$ for each $b_i$. This proves that $\underline{\tau}$ is surjective.
+\end{proof}
+
+\begin{lemma}\label{lem:final}
+  Let $ \mathfrak{Y} = [(Y,f)]\in \T(\Sigma)$ where $\Sigma$ is the topological pair of pants. Let $\mu,\mu'$ be a maximal laminations on $Y$ as constructed above. Let $ \mathfrak{Y}_\pa^\mu(t) = [(Y^\mu(t),\vp^\mu_t)]_\pa,\ \mathfrak{Y}_\pa^{\mu'}(t) = [(Y^{\mu'}(t),\vp^{\mu'}_t)]_\pa$ be points in $\T_\pa(Y)$ where $\vp^\mu_t$ and $\vp^{\mu'}_t$ are the stretch maps $Y\to Y^\mu(t)$ and $Y\to Y^{\mu'}(t)$ with maximal laminations $\mu$ and $\mu'$ respectively. Let $ \mathfrak{Y}_\pa(t) = [(Y^\mu(t), \psi^\mu_t)]_\pa$ where $\psi^\mu_t$ is the average map as described above. Then the following are true:
+  \begin{enumerate}
+    \item For any boundary component $b_i$ of $Y$, $$\tau_i(s(\mathfrak{Y}^\mu(t)), \mathfrak{Y}^\mu_\pa(t)) = - \tau_i(s(\mathfrak{Y}^\mu(t)), \mathfrak{Y}^{\mu'}_\pa(t)).$$
+    \item For any boundary component $b_i$ of $Y$, $$\tau_i( \mathfrak{Y}_\pa(t), s( \mathfrak{Y}^\mu(t))) = 0.$$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  Since $ \mathfrak{Y}^\mu(t) = \mathfrak{Y}^{\mu'}(t)$ as elements of $\T(\Sigma)$ let $s( \mathfrak{Y}^\mu(t)) = s( \mathfrak{Y}^{\mu'}(t))= [(Y^\mu(t), \fs_s)]_\pa$. The idea for the proof of this lemma stems in the fact that $\vp^\mu_t$ and $\vp^{\mu'}_t$ are related to each other by an orientation reversing isometry, $I_Y$ as described earlier. As $I_{Y}$ maps $\mu$ to $\mu'$ it follows that the outer square in the following diagram commutes.
+  \[\begin{tikzcd}
+	Y && Y \\
+	\\
+	{Y^\mu(t)} && {Y^{\mu'}(t)}
+	\arrow["{{I_{Y}}}", from=1-1, to=1-3]
+	\arrow["{{\varphi^\mu_t}}"', shift right, from=1-1, to=3-1]
+	\arrow["{\mathbf{f}_s}", shift left, from=1-1, to=3-1]
+	\arrow["{{\varphi_t^{\mu'}}}", from=1-3, to=3-3]
+	\arrow["{\mathbf{g}_s}"', shift right=2, dashed, from=1-3, to=3-3]
+	\arrow["{{I_{Y^\mu(t)}}}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+Let $\gs_s = I_{Y_\mu(t)}\fs_sI_{Y}^{-1}$. Since $I_{Y}$ pointwise preserves the seams along which we cut the pants into hexagons, and since $\fs_s$ preserves the dual arc representatives, it follows that in each of the three possible cases for the dual arcs discussed in example \ref{exmp:pants}, $\gs_s$ also preserves the dual arc representatives\footnote{The only non-trivial case to check is the last one. In this case the arc with endpoints on the same boundary is preserved by $I_Y$ as it is just reflected about the midpoint.}. Using the commutativity of the outer square, and the fact that $\fs_s \simeq \vp^\mu_t$ it follows that $\gs_s \simeq \vp^{\mu'}_t$. It follows that $[(Y^{\mu'}(t), \gs_s)]_\pa = [(Y^\mu(t), \fs_s)]_\pa$ as the distance between $\tilde{\gs}_s(\tilde{y})$ and $\tilde{\fs}_s(\tilde{y})$ is zero where $\tilde{y}$ is the lift of a boundary point which belongs to the intersection of seam of the pants and some dual arc representative. With this construction the two statements follow.
+  \begin{enumerate}
+    \item For any boundary component $b_i$ of $Y$ let $\tilde{y}$ be the lift of a point $y$ which is the endpoint of the seam of the pants on $b_i$. Then using the fact that $I_Y$ is an orientation reversing isometry and $I_Y^{-1}(\tilde{y}) = \tilde{y}$:
+      \begin{align*}
+        \tau_i((Y^{\mu'}(t), \gs_s),(Y^{\mu'}(t),\vp^{\mu'}_t)) &= d_s(\widetilde{\gs_s}(\tilde{y}), \widetilde{\vp^{\mu'}_t}(\tilde{y}))\\
+                                                     &=d_s(\widetilde{I_{Y^\mu(t)}\fs_sI^{-1}_Y}(\tilde{y}), \widetilde{I_{Y^\mu(t)}\vp^{\mu}_tI^{-1}_{Y}}(\tilde{y}))\\
+                                                     &=-d_s(\widetilde{\fs}(\tilde{y}), \widetilde{\vp^\mu_t}(\tilde{y}))\\
+                                                     &= -\tau_i((Y^\mu(t), \fs_s),(Y^{\mu}(t),\vp^{\mu}_t))
+      \end{align*}
+      Thus the first statement follows.
+    \item By definition of $\psi^\mu_t:Y\to Y^\mu(t)$ we know that for any $\tilde{y}$ in the lift of a boundary component $b_i$ the signed distance $d_s(\widetilde{\psi^\mu_t}(\tilde{y}), \widetilde{\vp^\mu_t}(\tilde{y})) =-d_s(\widetilde{\psi^\mu_t}(\tilde{y}), \widetilde{\vp^{\mu'}_t}(\tilde{y}))$. Thus it follows that 
+      $$\tau_i( \mathfrak{Y}_\pa(t), \mathfrak{Y}_\pa^\mu(t)) = -\tau_i( \mathfrak{Y}_\pa(t), \mathfrak{Y}_\pa^{\mu'}(t))$$
+  Thus using triangle identity and part 1 of the lemma, it follows that
+  \begin{align*}
+    \tau_i( \mathfrak{Y}_\pa(t), s( \mathfrak{Y}^\mu(t))) &= \tau_i( \mathfrak{Y}_\pa(t), \mathfrak{Y}_\pa^\mu(t)) + \tau_i(\mathfrak{Y}^\mu_\pa(t), s(\mathfrak{Y}^\mu(t)))\\
+        &= - (\tau_i( \mathfrak{Y}_\pa(t), \mathfrak{Y}_\pa^{\mu'}(t)) - \tau_i(\mathfrak{Y}^{\mu'}_\pa(t), s(\mathfrak{Y}^{\mu}(t)))) \\
+        &= - \tau_i( \mathfrak{Y}_\pa(t), s( \mathfrak{Y}^\mu(t))),
+  \end{align*}
+  which completes the proof.
+  \end{enumerate}
+\end{proof}
+This lemma tells us that $\psi^\mu_t$ preserves the dual arc representatives of $ \mathfrak{Y}$ upto homotopy relative to the end points, and thus is a dilation map. Combining this with lemma \ref{lem:dilation} this proves theorem \ref{thm:main}.
+\begin{rem}
+  As mentioned in the above sections, dilation rays can be defined for arbitrary geodesic laminations as done by \cite{farre}. If $\lambda$ is a geodesic lamination which is the Hausdorff limit of pants decomposition $\lambda_n$, then using results in \cite{farre2} we can conclude that the dilation rays based at $X$ with respect to $\lambda$ are also Thurston geodesics.
+\end{rem}

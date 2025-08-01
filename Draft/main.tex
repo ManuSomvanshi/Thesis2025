@@ -1,0 +1,258 @@
+\documentclass[a4paper, 12pt, twoside]{report}  
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+% Specify required margin widths.
+\geometry{
+ a4paper,
+ left=1.25in,
+ right=1in,
+ top=1in,
+ bottom=1in
+ }
+
+% Specify a list of required packages.
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{authblk}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{quiver}
+\usepackage{caption}
+\usepackage{yhmath}
+
+%last package should always be hyperref
+\usepackage{hyperref}
+% Set path/directory where all figures are stored.
+\graphicspath{ {figures/} }
+
+% Set required line spacing.
+% A factor of 1.3 corresponds to 1.5 line spacing.
+\linespread{1.3}
+
+% numebring 
+\renewcommand\thechapter{\Roman{chapter}}
+\renewcommand\thefigure{\thechapter.\arabic{figure}}    
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+
+% section command
+\titleformat*{\section}{\Large\scshape\center}
+\titlelabel{\thetitle.\quad}
+
+% theorems, proofs, and definitions
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{cor}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{exmp}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+% Macros
+\def\H{\mathbb{H}^2}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\T{\text{Teich}}
+\def\vp{\varphi}
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\s{\sigma}
+\def\d{\delta}
+\def\e{\epsilon}
+\def\dd{\text{d}}
+\def\r{\right}
+\def\l{\left}
+\def\PSL{\text{PSL}(2,\mathbb{R})}
+\def\bH{{\partial \H}}
+\def\hol{\text{hol}}
+\def\pa{\partial}
+\def\bp{\pa\tilde\vp}
+\def\sh{\text{shear}}
+\def\Sp{\text{Sp}}
+\def\fs{\mathbf{f}}
+\def\gs{\mathbf{g}}
+
+\begin{document}
+
+\date{}
+
+% Use '\thispagestyle{empty}' to ensure that this page
+% is not counted in page numbering.
+\thispagestyle{empty}
+
+% Set required margin widths for first few pages.
+\newgeometry{top = 2.5in, left = 1.25in, right = 1in, bottom = 1in}
+\begin{titlepage}
+
+\begin{center}
+    \LARGE
+    \textsc{\textbf{On the geodesics of Thurston's Asymmetric Metric}}\\
+    \vspace{1cm}
+    \Large
+    \textsc{Manvendra Somvanshi}\\
+    \vspace{1cm} 
+    \large
+    \textit{\textbf{A dissertation submitted for the partial fulfilment of
+    BS-MS dual degree in Science}}\\
+    \vspace{3.5cm}
+
+    \includegraphics[width=8cm]{HighResolutionLogo.jpg}\\
+
+    \large
+    \textbf{Indian Institute of Science Education and Research Mohali}\\
+
+    \large
+    \textbf{April 2025}\\
+
+\end{center}
+
+
+\end{titlepage}
+
+% Use '\thispagestyle{empty}' to ensure that this page
+% is not counted in page numbering.
+\thispagestyle{empty}
+\cleardoublepage
+
+% Use Roman Page Numbering for first few pages.
+\pagenumbering{Roman}
+
+% Certificate of Examination.
+\begin{center}
+    \textbf{\Large Certificate of Examination}
+\end{center}
+
+This is to certify that the dissertation titled \textbf{On the geodesics of Thurston's Asymmetric Metric} submitted by \textbf{Manvendra Somvanshi} (Reg. No. MS20126) for the partial fulfillment of BS--MS Dual Degree programme of the institute, has been examined by the thesis committee duly appointed by the institute. The committee finds the work done by the candidate satisfactory and recommends that the report be accepted.
+
+\vspace{4cm}
+
+Prof. Pranab Sardar \hfill Prof. Krishnendu Gongopadhyay \hfill Prof. Soma Maity
+
+\vspace{4cm}
+
+  \begin{minipage}{3.75cm}
+    Prof. Pranab Sardar
+    \\
+    (Local Supervisor)
+  \end{minipage}
+  \hfill
+  \begin{minipage}{3.90cm}
+    Prof. James Farre
+    \\
+    (External Supervisor)
+  \end{minipage}\\
+
+\vspace{4cm}
+\begin{flushright}
+Dated: \today
+\end{flushright}
+
+\cleardoublepage
+
+% Declaration.
+\begin{center}
+    \textbf{\Large Declaration}
+\end{center}
+The work presented in this dissertation has been carried out by me under the guidance of Prof. James Farre at the Max Planck Institute for Mathematics in Science, Leipzig and Prof. Pranab Sardar at the Indian Institute of Science Education and Research, Mohali.
+
+\vspace{0.4cm}
+
+This work has not been submitted in part or in full for a degree, a diploma, or a fellowship to any other university or institute. Whenever contributions of others are involved, every effort is made to indicate this clearly, with due acknowledgement of collaborative research and discussions. This thesis is a bonafide record of original work done by me and all sources listed within have been detailed in the bibliography.
+
+\vspace{2cm}
+
+\begin{flushright}
+Manvendra Somvanshi
+\\
+(Candidate)
+\\
+Dated: \today
+\end{flushright}
+
+In my capacity as the supervisor of the candidates project work, I certify that the above statements by the candidate are true to the best of my knowledge.
+
+\vspace{2cm}
+  \begin{minipage}{3.75cm}
+    Prof. Pranab Sardar
+    \\
+    (Local Supervisor)
+  \end{minipage}
+  \hfill
+  \begin{minipage}{3.90cm}
+    Prof. James Farre
+    \\
+    (External Supervisor)
+  \end{minipage}\\
+\vspace{2cm}
+\begin{flushright}
+Dated: \today
+\end{flushright}
+
+\cleardoublepage
+
+% Acknowledgements.
+\begin{center}
+\textbf{\Large Acknowledgements}
+\end{center}
+
+This master's thesis would not be possible without the support and guidance of my external supervisor Prof. James Farre. The research problem addressed in this thesis was initially proposed by Prof. Farre, whose expertise laid the foundation for this investigation. I would like to express my heartfelt thanks to Prof. Farre for the long mathematical discussions, for the practical and insightful advice, for motivating me at crucial moments, and for introducing me to the Moroccan restaurant. Suggestions made by Prof. Farre also helped remove inaccuracies and improve the clarity of this thesis.\\
+
+I am deeply grateful to my local supervisor Prof. Pranab Sardar for sharing his expertise and providing thoughtful suggestions that improved the clarity and coherence of this thesis.\\
+
+I would also like to thank Fabi, Martin, Jiajun, and Farhan for insightful discussions.\\
+
+I am also grateful to DAAD-WISE scholarship and MPI-MIS for providing the financial funds to make it possible to visit and work in MPI-MIS. I would also like to thank them for helping me with the visa process.\\
+
+I owe a deep debt of gratitude to Sanjana and my family, whose unrelenting support and faith in my abilities helped me navigate the most difficult moments of my thesis. Your presence in my life has made all the difference.
+
+\newpage
+% Abstract of the Thesis
+\addcontentsline{toc}{chapter}{\textbf{Abstract}}
+\begin{center}
+    \textbf{\Large Abstract}
+\end{center}
+
+Thurston's introduction of the asymmetric metric on Teichmuller space brought new interest to the hyperbolic geometric perspective to Teichmuller theory, which earlier was viewed in terms of complex analysis. In this dissertation, I go over several well known results in hyperbolic geometry and Teichmuller theory. Some theorems in Thurston's seminal paper \cite{thurston} are proved in this dissertation in detail using the proof ideas presented by Thurston. In the last chapter of this dissertation, the dilation ray construction in \cite{farre} is shown to be a Thurston geodesic for the case when the geodesic lamination is a pants decomposition.
+
+\newpage
+\restoregeometry
+
+% Creates a List of All Figures.
+\addcontentsline{toc}{chapter}{\textbf{List of Figures}}
+\listoffigures
+
+\newpage
+% Creates a Table of Contents.
+\tableofcontents
+
+\newpage
+
+% Use Arabic Page Numbering for the rest of the thesis.
+\pagenumbering{arabic} 
+
+%Include files here for the thesis content
+% use \include{file name}
+\include{Content/ch0}
+\include{Content/ch1}
+\include{Content/ch2}
+\include{Content/ch3}
+\bibliography{Bibliography}
+\bibliographystyle{style_files/amsalpha.bst}
+
+\end{document}

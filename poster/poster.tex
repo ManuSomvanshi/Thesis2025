@@ -1,0 +1,136 @@
+\documentclass[a1paper, 14pt, landscape]{tikzposter}
+\usetheme{Simple}
+
+% packages
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath, amssymb, mathrsfs}
+
+%define colors
+\colorlet{Main}{CadetBlue!70}
+\colorlet{backgroundcolor}{White}
+\colorlet{titlebgcolor}{Main}
+\colorlet{titlefgcolor}{Black}
+\colorlet{notebgcolor}{Black!10}
+\colorlet{blocktitlefgcolor}{Main}
+
+% macros
+\def\H{\mathbb{H}^2}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+\def\Z{\mathbb{Z}}
+\def\N{\mathbb{N}}
+\def\T{\text{Teich}}
+\def\vp{\varphi}
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\s{\sigma}
+\def\d{\delta}
+\def\e{\epsilon}
+\def\dd{\text{d}}
+\def\r{\right}
+\def\l{\left}
+\def\PSL{\text{PSL}(2,\mathbb{R})}
+\def\bH{{\partial \H}}
+\def\hol{\text{hol}}
+\def\pa{\partial}
+\def\bp{\pa\tilde\vp}
+\def\sh{\text{shear}}
+\def\Sp{\text{Sp}}
+\def\fs{\mathbf{f}}
+\def\gs{\mathbf{g}}
+
+% title
+\title{On the Geodesics of Thurston's Asymmetric Metric}
+\author{Manvendra Somvanshi}
+\institute{Under the guidance of Prof. James Farre and Prof. Pranab Sardar}
+\titlegraphic{
+\includegraphics[scale=0.2]{iiserm-logo.png} \hfill \includegraphics[scale=3]{mpi.png}
+}
+\begin{document}
+\maketitle
+\begin{columns}
+\column{0.33}
+\block{Teichm\"{u}ller Space}{
+  A pair $(X,f)$ where $X$ is a hyperbolic surface and $f:S\to X$ is a homeomorphism is called a \textit{marking} of $S$. Two markings $(X,f)$ and $(Y,g)$ are said to be equivalent if there is an isometry $I:X\to Y$ such that $I f \simeq_{\text{iso}} g$. The \textit{Teichm\"{u}ller space} of $S$ is defined as the space of a hyperbolic markings on $S$ up to the above equivalence.
+  \begin{align*}
+    \T(S) = \l\{(X,f:S\to X)\ |\ f\ \text{is orientation preserving}\r\}/\sim
+  \end{align*}
+  We denote the elements of $\T(S)$ by $ \mathfrak{X}$.\\
+
+  For example for the pair of pants, i.e. sphere with three punctures $S_{0,3}$ the Teichm\"{u}ller space is homeomorphic to $\R_{+}^3$.
+}
+\block{Thurston Metric}{
+  In his paper, Thurston asks the following question: given a surface $S$ with two hyperbolic structures $f:S\to X$ and $g:S\to Y$, is there a homeomorphism $\vp:X\to Y$ compatible with the markings which realizes the least possible value of the Lipschitz constant? In other words if
+\begin{align}
+  L = \inf_{\substack{\psi:X\to Y\\ \psi f\simeq g}} \text{Lip}(\psi)
+\end{align}
+then does there exist a $L-$Lipschitz homeomorphism $\vp$. It turns out that the answer to this question is positive. The definition of the Thurston metric was motivated by this question. Let $L:\T(S)\times \T(S) \to \R_{+}$ be defined as
+  \begin{align}
+    L( \mathfrak{X}, \mathfrak{Y}) = \inf_{\substack{\psi:X\to Y\\ \psi f\simeq g}} \log(\text{Lip}(\psi))
+  \end{align}
+  This is called Thurston's asymmetric metric.
+Thurston had also defined another metric on $\T(S)$ as follows: define $K: \T(S)\times \T(S) \to \R_{+}$ as
+  \begin{align}
+    K( \mathfrak{X}, \mathfrak{Y}) = \sup_{c\in \mathcal{S}} \log\l(\frac{\ell_\mathfrak{Y}(c)}{ \ell_\mathfrak{X}(c)}\r)
+  \end{align}
+  Thurston had showed that these two metrics are equal!
+
+  \begin{tikzfigure}[Points far away in one direction, but close in the other.]
+  \centering
+  \def\svgwidth{0.2\textwidth}
+  \import{figures/Chapter1}{genus2.pdf_tex}
+  \end{tikzfigure}
+}
+\column{0.33}
+\block{Geodesics}{\coloredbox{What do geodesics in Thurston's metric look like?} 
+Thurston had given an example of geodesics called \textit{Stretch Rays}. This involved ``cutting up" the surface into ideal hyperbolic triangles, constructing a pair of foliations on these polygons, and explicitly constructing Lipschitz maps which stretches along one of these foliations.}
+  \block{Arc Complex}{
+    Let $\Sigma$ be a topological surface with boundary. The arc complex $ \mathscr{A}(\Sigma, \pa \Sigma)$ of $\Sigma$ is a simplicial complex defined as follows:
+  \begin{enumerate}
+    \item The $0-$simplexes are homotopy classes of simple essential arcs relative to the boundary.
+    \item The vertices $(\a_1,\cdots, \a_n)$ span an $n-$simplex if $\underline{\a} = \bigcup_{i=1}^n \a_i$ is an \textit{arc system}.
+  \end{enumerate}
+  The sub-complex $ \mathscr{A}_\infty(\Sigma, \pa \Sigma)$ of $ \mathscr{A}(\Sigma, \pa \Sigma)$ only has simplexes whose vertices form a non-filling arc systems. The compliment of the non-filling arc complex is called the filling arc space and denoted $ \mathscr{A}_{\text{fill}}(\Sigma, \pa \Sigma)$. The geometric realization space of $\mathscr{A}_{\text{fill}}(\Sigma, \pa \Sigma)$, denoted $|\mathscr{A}_{\text{fill}}(\Sigma, \pa \Sigma)|\times \R^+$, is the space of all weighted filling arc systems.
+  \begin{tikzfigure}
+  \centering
+  \def\svgwidth{0.1\textwidth}
+  \import{figures/Chapter3}{arc-complex.pdf_tex}
+  \end{tikzfigure}
+}
+\block{Dual Arcs of a Surface with Boundary}{
+  Let $Y$ be a hyperbolic surface with geodesic boundary which is homeomorphic to $\Sigma$. The \textit{valency} of a point $y\in Y$ is the cardinality of the set $\{p\in \pa Y\ |\ d(y,p) = d(y, \pa Y)\}$. The \textit{spine} of a hyperbolic surface is defined as $\Sp(Y) = \{y\in Y\ |\ \text{valency of}\ y\geq 2\}$. This is called the spine as it is a deformation retract of $Y$. There is a natural deformation retract $r:Y\to \Sp(Y)$ s.t. the fibers are geodesic arcs orthogonal to the boundary.\\
+
+  Given any two points $y,y'\in \Sp_2(Y)$ which lie on the same edge $e$ of the spine the arcs $r^{-1}(y)$ and $r^{-1}(y')$ are homotopic to each other relative to the boundary $\pa Y$. A dual arc $\a_e$ is the homotopy class relative to $\pa Y$ of fibers of $r$ corresponding to $e$. There is a special representative of the class $\a_e$ which is the fiber perpendicular to $e$ as well as the boundary. 
+}
+
+\column{0.33}
+\block{}{
+  \begin{tikzfigure}
+  \centering
+  \def\svgwidth{0.2\textwidth}
+  \import{figures/Chapter3}{filling-arcs.pdf_tex}
+  \end{tikzfigure}
+If $\tau$ is an arc in $Y$ transverse to the fibers of $r$ such that $r(\tau)\subset e$ for some edge $e$ of $\Sp(Y)$ then define a measure $\mu_\tau$ on $\tau$ by defining the measure of any sub-arc $c$ to be length of the curve on $\pa Y$ obtained by continuously deforming $c$ to the boundary keeping each point of $c$ on the same fiber of $r$. For an arbitrary transverse arc $\tau$, it can be decomposed into finitely many components.
+  \begin{tikzfigure}
+  \centering
+  \def\svgwidth{0.1\textwidth}
+  \import{figures/Chapter3}{defor.pdf_tex}
+  \end{tikzfigure}
+}
+\block{Weighted Filling Arc Space is Teichmuller space}{
+  Every surface can be assigned a weighted arc system by defining $\underline{A}(Y) = \sum_{e\subset \Sp(Y)} \mu_e(e) \a_e$. Note that if $Y$ and $Y'$ represent the same point in $\T(\Sigma)$ then the isometry preserves the weighted dual arc system. This means that $\underline{A}(\square)$ can be defined as a function on $\T(S)$. The following theorem was proved by Luo and later, in more generality, by Calderon and Farre.\\
+  \coloredbox{The map $\underline{A}:\T(S)\to |\mathscr{A}_{\text{fill}}(\Sigma, \pa \Sigma)|\times \R^+$ is a homeomorphism.}
+}
+\block{Dilation Rays}{
+  Let $ \mathfrak{X}\in \T(S)$ and $\lambda$ be a multicurve in $X$. Consider the completion $Y_1,\cdots, Y_n$ of the components of $X-\lambda$ and the corresponding points $ \mathfrak{Y}_i\in \T(\Sigma_i)$. Then $\underline{A}^{-1}\l(e^t\underline{A}( \mathfrak{Y}_i)\r)$ defines a curve in $\T(\Sigma_i)$ denoted by $ \mathfrak{Y}_i(t)$. Then gluing all $Y_i(t)$ together without any twisting gives a curve $ \mathfrak{X}^\lambda_t$ in $\T(S)$. This curve is called the \textit{Dilation ray} based at $X$.\\
+
+  We have proved the following result:\\
+  \coloredbox{If $ \mathfrak{X}\in \T(S)$ and $\lambda$ is a pants decomposition of $S$, then the dilation ray $ \mathfrak{X}^\lambda_t$ is a Thurston geodesic.}
+}
+\end{columns}
+
+% the example
+\end{document}

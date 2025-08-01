@@ -1,7 +1,7 @@
 \section{Hyperbolic Structures on Surfaces}
 For the sake of consistency with the texts, I use the Poincare model of hyperbolic plane here.
 \begin{definition}
-  Let $X$ be a surface. A hyperbolic structure on $X$ is an atlas of charts such that each chart $\p:U\to \p(U)\subset \H$ is a homeomorphism (equivalently this can be defined to all of $\H$) and the transition maps in the atlas are restrictions of orientation preserving isometries of $\H$.
+  Let $X$ be a surface. A hyperbolic structure on $X$ is an atlas of charts such that each chart $\p:U\to \p(U)\subset \H$ is a homeomorphism and the transition maps in the atlas are restrictions of orientation preserving isometries of $\H$.
 \end{definition}
 
 Let $p\in X$ and $(U,\p)$ be a chart around $p$. We can define an inner product on $T_p X$ as
@@ -54,4 +54,24 @@ Since $\langle \cdot, \cdot \rangle_{T_pX}$ is a smooth bilinear map it serves a
   Note that on the image of $E$ in $X$ the map $E\circ D$ is identity. $E(\H)$ is closed and open (since $E$ is local injection it follows by Invariance of domain theorem). Since $X$ is connected the only non-trivial clopen subset is $X$ itself. Thus $E(\H) = X$. Hence $E\circ D = 1_X$.
 \end{proof}
 
-As a consequence of the above theorem it follows that the universal cover of any hyperbolic surface $X$ is isometric to $\H$.
+As a consequence of the above theorem it follows that the universal cover of any closed hyperbolic surface $X$ is isometric to $\H$. Thus for any hyperbolic surface $X$, we can write it as $\H/\Gamma$ where $\Gamma$ is the fundamental group of the space $X$ (since deck transformations is isomorphic to fundamental group for universal covers). Note that since $\Gamma$ acts on $\H$ by automorphisms, it is a subgroup of $PSL_2(\R)$. Now suppose that $x\in X$, then the pre-image of $x$ under the covering map is a discrete set, which is equivalent to saying that that the orbit of each point is discrete which in turn is equivalent to saying that $\Gamma$ is discrete. This means $\Gamma$ is a Fuchsian group which acts properly discontinuously on $\H$ (deck transformations act properly discontinuously). As a result $\Gamma$ has no elliptic elements.\\
+
+If $\H/\Gamma$ is compact then the Dirichlet domain $D$ of $\Gamma$ in $\H$ is compact, let $\e$ be the maximum distance between the points in the dirichlet domain. Then $\rho(z,\g z) \geq \e$. But for parabolic elements, which are essentially translations, say $z\mapsto z+1$, the distance between $z, z+1$ is smaller than $\e$ for large enough $\Im(z)$. Thus $\Gamma$ can only have hyperbolic elements.
+
+\begin{proposition}
+  The torus is not a hyperbolic surface.
+\end{proposition}
+\begin{proof}
+  Suppose it is, then it has $\H$ as it's universal cover. But that would mean that the fundamental group $\Z\oplus \Z$ is a Fuchsian group. But since all abelian Fuchsian groups are cyclic it follows that $Z\oplus \Z$ is not cyclic.
+\end{proof}
+
+\begin{definition}
+  A closed curve is essential if it is not null homotopic.
+\end{definition}
+
+\begin{proposition}
+  Every essential closed curve in a compact hyperbolic surface $F$ is freely homotopic to a unique closed geodesic.
+\end{proposition}
+\begin{proof}
+  Let $C$ be a closed curve in $F = \H/\Gamma$ and let $\tilde{C}$ be it's unique lift at fixed point $x$ in $\H$. Then the other end point of the lift is some $g x$, for some $g \in \Gamma$ since it's a loop when pushed down. Let $\tilde{\g}$ be the unique geodesic, which is the fixed axis of the hyperboic element $g$. 
+\end{proof}
